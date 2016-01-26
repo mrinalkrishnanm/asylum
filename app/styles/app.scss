@@ -1,6 +1,15 @@
+
+$darkest-blue:#1a1f2b;
+$dark-blue:#30395c;
+$medium-blue:#4a6491;
+$light-blue:#85a5cc;
+$lightest-blue:#d0e4f2;
+
 @import "bourbon/bourbon";
 @import "neat/neat";
 @import "base/base";
+@import "partials/sidebar.sass";
+
 
 * {
   margin: 0;
@@ -10,6 +19,16 @@
 
 body {
   font-family: 'Helvetica', 'Arial';
+  height: 100%;
+  background-color:$lightest-blue;
+}
+
+html {
+  height: 100%;
+}
+
+.wrapper {
+  height: 100%;
 }
 
 .register {
