@@ -1,3 +1,7 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "base/base";
+
 * {
   margin: 0;
   padding: 0;
@@ -8,37 +12,23 @@ body {
   font-family: 'Helvetica', 'Arial';
 }
 
-.issues {
-  width: 100%;
-  float: left;
-  padding: 1em;
+.register {
+  @include span-columns(6 of 12);
+  @include shift(3);
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 8%
 }
 
-.issue-box {
-  width: 100%;
-  float: left;
-  padding: 1em;
-  border: 1px solid #EEE;
-
-  a {
-    color: black;
-    text-decoration: none;
-  }
-
-  &:hover {
-    cursor: pointer;
-    background: #EEE;
-  }
+.login{
+  @include span-columns(6 of 12)
+  @include shift(3)
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 8%
 }
-
-.issue-sidebar {
-  width: 35%;
-  float: right;
-  position: fixed;
-  height: 100%;
-  right: 0;
-  top: 0;
-  background: rgba(white, .95);
-  border-left: 1px solid #eee;
-  padding: 1em;
+.submit-long{
+  @include span-columns(12)
 }

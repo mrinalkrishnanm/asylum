@@ -11,7 +11,7 @@ class App extends React.Component {
   render () {
     return (
       <div className="issues">
-        <h2> nullify </h2>
+        <h2> Nullify </h2>
         <RouteHandler />
       </div>
     )
