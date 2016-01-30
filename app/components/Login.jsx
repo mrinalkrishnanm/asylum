@@ -3,24 +3,30 @@ import Router from 'react-router';
 import Request from 'superagent';
 
 class Login extends React.Component {
+
 	constructor() {
 		super() 
 	}
 
-   	handleLogin(e){
-   		e.preventDefault();
-   		var username=this.refs.username.value;
-   		var password=this.refs.password.value;
+   handleLogin(e){
+
+   	e.preventDefault();
+   	var username=this.refs.username.value;
+   	var password=this.refs.password.value;
 
    	var enter={
    		username:username,
    		password:password
    	}
    	console.log(enter)
+      var _this = this
    	Request.post("http://localhost:3000/tokens/verify")
    	.send({user:enter})
    	.end(function(err,res){
    		console.log(res)
+         var response = JSON.parse(res.text).token
+         localStorage.interno_token = response
+         _this.context.router.transitionTo('dashboard');
    	})
       
     }
@@ -35,8 +41,11 @@ class Login extends React.Component {
             <input type="submit" value="Login" className="submit-long"/>
 			</form>
 			</div>
-			)
+		)
 	}
 }
 
+Login.contextTypes = {
+  router: React.PropTypes.func.isRequired
+}
 module.exports = Login;

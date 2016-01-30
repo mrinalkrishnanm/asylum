@@ -9,12 +9,16 @@ $lightest-blue:#d0e4f2;
 @import "neat/neat";
 @import "base/base";
 @import "partials/sidebar.sass";
+@import "partials/dashboard.sass";
 
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+#app{
+  height: 100%;
 }
 
 body {

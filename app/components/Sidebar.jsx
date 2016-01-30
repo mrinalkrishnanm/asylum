@@ -8,11 +8,12 @@ class Sidebar extends React.Component{
 	}
 
 	render(){
+        console.log(this.props.user)
   		return(
     		<div className='sidebar'>
         		<ul className='sidebar-contents'>
-                    <Gravatar email="akhilr94@gmail.com" size="80" />
-                    <p className="gravatar-title">Welcome Akhil </p>
+                    <Gravatar email={this.props.user.email} size="80" />
+                    <p className="gravatar-title">Welcome {this.props.user.first_name} </p>
         			<li>Home</li>
         			<li>Projects</li>
         			<li>Notification</li>
