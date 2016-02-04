@@ -20,7 +20,9 @@ module.exports = {
 
   handleRequest: function(res,success,failure) {
     if(res.status == 200)
-      success(res);
+      { var response = JSON.parse(res.text)
+        success(response);
+      }
     else
       failure(res);
     

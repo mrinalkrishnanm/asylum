@@ -4,13 +4,23 @@ import Gravatar from './Gravatar.jsx';
 import Request from 'superagent';
 import _ from 'lodash';
 
+import userStore from '../stores/userStore.js';
+import userAction from '../actions/userAction.js';
+
+
 class Sidebar extends React.Component{
 	constructor(){
-		super()
-	}
+    super()
+    userStore.getState();
+  }
+
+  componentDidMount() {
+    userAction.loadCurrent();
+  }
 
 
-	render(){
+  render(){
+    //console.log(this.state.currentUser)
         return(
     		<div className='sidebar'>
         		<ul className='sidebar-contents'>
