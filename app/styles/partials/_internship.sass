@@ -4,4 +4,50 @@
   
 .internship-box
   +span-columns(10)
-  background-color: #e5e5e5
+  border-radius: 5px
+  color: $dark-blue
+  background-color: #ffffff
+  padding: 10px
+  margin-bottom: 20px
+
+.internship-box-header
+  +span-columns(12)
+  //border-bottom: 1px solid $medium-blue
+  padding: 10px 0 10px 10px
+
+  h2
+    +span-columns(4)
+    +omega()
+    font-weight: 400
+    font-size: 1.3em
+
+  button
+    +span-columns(2.5)
+    +shift(1)
+    +omega()
+    height: 35px
+    font-size: 12px
+    margin-top: -8px
+    float: right
+    background-color: $button-blue
+
+.internship-title
+  font-weight: 200 !important
+  font-size: 1.3em
+  +shift(1)
+
+
+    
+.internship-box-body
+  +span-columns(12)
+  border-top: 1px solid white
+  
+  p
+    +span-columns(4)
+    padding: 5px
+    font-size: 0.9em
+    text-align: center
+    font-weight: 200
+    background-color: $lightest-blue
+    border-radius: 5px
+  

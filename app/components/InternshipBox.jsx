@@ -15,7 +15,16 @@ class InternshipBox extends React.Component{
     var internship = this.props.internship
     return (
       <div className="internship-box">
-       <h2> {internship.position} </h2>
+        <div className="internship-box-header">
+          <h2> {internship.position} </h2>
+          <h2 className="internship-title"> Spaceback</h2>
+          <button> Apply </button>
+        </div>
+        <div className="internship-box-body">
+          <p>Duration: {internship.duration}</p>
+          <p>Stipend: {internship.stipend} </p>
+          <p>Location: {internship.location} </p>
+        </div>
       </div>
     );
   }

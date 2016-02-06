@@ -36,10 +36,10 @@ class DashboardContainer extends React.Component{
     }
 
     return(
-      <div>
+      <div className='dashboard-wrapper'>
         {display}
         <div className='dashboard-container'>
-        <RouteHandler />
+          <RouteHandler />
         </div>
       </div>
     )
