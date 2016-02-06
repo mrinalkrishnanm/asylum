@@ -36,9 +36,11 @@ class DashboardContainer extends React.Component{
     }
 
     return(
-      <div className='dashboard'>
-      {display}
-      <RouteHandler />
+      <div>
+        {display}
+        <div className='dashboard-container'>
+        <RouteHandler />
+        </div>
       </div>
     )
   }
