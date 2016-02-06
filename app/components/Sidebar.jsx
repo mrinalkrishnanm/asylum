@@ -11,13 +11,7 @@ import userAction from '../actions/userAction.js';
 class Sidebar extends React.Component{
 	constructor(){
     super()
-    userStore.getState();
   }
-
-  componentDidMount() {
-    userAction.loadCurrent();
-  }
-
 
   render(){
     //console.log(this.state.currentUser)

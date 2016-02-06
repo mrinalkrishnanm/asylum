@@ -25,7 +25,7 @@ class userStore {
 
   handleLoadCurrentFailure(error) {
     console.log("Fail dispatcher")
-    this.errorMessage = error;
+    this.setState({errorMessage:error})  
   }
 
 }

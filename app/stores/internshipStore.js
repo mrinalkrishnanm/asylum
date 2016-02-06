@@ -1,16 +1,28 @@
-import Reflux from 'reflux';
+import alt from '../alt.js';
+import internshipAction from '../actions/internshipAction.js';
 
-var internshipStore = Reflux.createStore({
+class internshipStore {
+  constructor() {
+    this.internships = [];
+    this.errorMessage= null;
+    this.bindListeners({
+      handleFetchInternship: internshipAction.FETCH_INTERNSHIP,
+      handleFetchComplete:internshipAction.FETCH_COMPLETE,
+      handleFetchFailure:internshipAction.FETCH_FAILURE
+    })
+  }
 
-	listenables: [internshipAction],
-	data: {
-		internships: []
-	},
-	init() {
-		console.log("Initiated");
-	}
+  handleFetchInternship() {
+    console.log("Initial Dispatcher")
+  }
 
-	getInitialState() {
-		return this.data;
-	}
-})
+  handleFetchComplete(internships) {
+    this.setState({internships: internships})
+  }
+
+  handleFetchFailure(error) {
+    this.setState({errorMessage:error})
+  }
+}
+
+module.exports = alt.createStore(internshipStore, "internshipStore");
