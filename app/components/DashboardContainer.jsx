@@ -6,11 +6,14 @@ import _ from 'lodash';
 import userAction from '../actions/userAction.js';
 import userStore from '../stores/userStore.js';
 import { RouteHandler } from 'react-router';
+import internshipStore from '../stores/internshipStore.js';
+import internshipAction from '../actions/internshipAction.js';
+
 
 class DashboardContainer extends React.Component{
   constructor() {
     super()
-    this.state = userStore.getState(); 
+    this.state = userStore.getState();
   }
 
   componentWillMount() {
@@ -18,10 +21,13 @@ class DashboardContainer extends React.Component{
     userAction.loadCurrent();
     this.onChange = this.onChange.bind(this)
     userStore.listen(this.onChange)
+    internshipAction.fetchInternship();
+    internshipStore.listen(this.onChange)
   }
 
   componentWillUnmount() {
     userStore.unlisten(this.onChange)
+    internshipStore.unlisten(this.onChange)
   }
 
   onChange(state) {

@@ -20,12 +20,10 @@ class Sidebar extends React.Component{
         		<ul className='sidebar-contents'>
                     <Gravatar email={this.props.user.email} size="80" />
                     <p className="gravatar-title">Welcome {this.props.user.first_name} </p>
-        			<li>Home</li>
-        			<li>Projects</li>
-        			<li>Notification</li>
-                    <li>Inbox</li>
-        			<li>Team</li>
-        			<li>Calendar</li>
+        			<li>Dashboard</li>
+        			<li>Internships</li>
+        			<li>Notifications</li>
+              <li>Inbox</li>
         			<li>Settings</li>
         		</ul>
     		</div>

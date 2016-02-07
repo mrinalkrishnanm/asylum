@@ -8,7 +8,8 @@ import Dashboard from './components/Dashboard.jsx';
 import DashboardContainer from './components/DashboardContainer.jsx';
 import NewInternship from './components/NewInternship.jsx';
 import InternshipContainer from './components/InternshipContainer.jsx';
-
+import InternshipApply from './components/InternshipApply.jsx';
+import InternshipList from './components/InternshipList.jsx';
 
 var routes = (
   <Route name="app" path="/" handler={ App }>
@@ -18,7 +19,8 @@ var routes = (
   	<Route name="dashboard-container" path="/dashboard" handler={ DashboardContainer } >
       <DefaultRoute name="dashboard" handler = {Dashboard} />
       <Route name="internships" path="/internships" handler={ InternshipContainer } >
-    	  <Route name="newinternship" path="/internships/new" handler={ NewInternship } />
+        <DefaultRoute handler={ InternshipList } />
+        <Route name="apply-intern" path=":id" handler={ InternshipApply }/>
       </Route>
     </Route>
   </Route>

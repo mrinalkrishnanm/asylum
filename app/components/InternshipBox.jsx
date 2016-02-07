@@ -4,6 +4,7 @@ import React from 'react';
 import Router from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
+import { Link } from 'react-router';
 
 class InternshipBox extends React.Component{
 
@@ -18,7 +19,9 @@ class InternshipBox extends React.Component{
         <div className="internship-box-header">
           <h2> {internship.position} </h2>
           <h2 className="internship-title"> Spaceback</h2>
-          <button> Apply </button>
+          <Link to="apply-intern" params={{id: internship.id}}>
+            <button> Apply </button>
+          </Link>
         </div>
         <div className="internship-box-body">
           <p>Duration: {internship.duration}</p>
