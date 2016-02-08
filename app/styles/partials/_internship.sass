@@ -1,4 +1,8 @@
 
+$grey: rgba(114,118,119,0.1)
+$dark-grey: rgba(114,118,119,0.3)
+$light-grey: rgba(0,0,0,0.03)
+
 .internship-list
   margin-top: 25px
   
@@ -6,13 +10,12 @@
   +span-columns(10)
   border-radius: 5px
   color: $dark-blue
-  background-color: #ffffff
+  background-color: rgba(0,0,0,0.035)
   padding: 10px
   margin-bottom: 20px
 
 .internship-box-header
   +span-columns(12)
-  //border-bottom: 1px solid $medium-blue
   padding: 10px 0 10px 10px
 
   h2
@@ -40,7 +43,6 @@
     
 .internship-box-body
   +span-columns(12)
-  border-top: 1px solid white
   
   p
     +span-columns(4)
@@ -48,7 +50,7 @@
     font-size: 0.9em
     text-align: center
     font-weight: 200
-    background-color: $lightest-blue
+    background-color: rgba(114,118,119,.1)
     border-radius: 3px
   
 
@@ -56,8 +58,9 @@
   +span-columns(10)
   margin-top: 20px
   border-radius: 5px
-  background-color: white
-  padding: 10px
+  background-color: rgba(0,0,0,0.035)
+  padding: 20px
+  box-shadow: 1px 2px 1px rgba(114,118,119,0.2)
 
   small
     border-radius: 3px
@@ -68,4 +71,24 @@
   p
     margin-top: 15px
   
+
+.apply-stages
+  +span-columns(9.78 of 12)
+  +shift(2.22)
+  height: 100px
+  background-color: $light-grey
+  position: absolute
+  bottom: 0
+  left: 0
+
+  .stage-block
+    +span-columns(4,block-collapse)
+    text-align: center
+    height: inherit
+    border-right: 1px solid $dark-grey
+
+  .stage-block:last-child
+    border: none
   
+  .stage-block:hover
+    background-color: $grey

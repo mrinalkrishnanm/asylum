@@ -23,9 +23,12 @@
     render() {
 
       var internships = this.state.internships
-      var display = internships.map((internship) => {
-        return <InternshipBox key={internship.id} internship={internship} />
-      })
+      console.log(internships)
+      if(!_.isEmpty(internships)) {
+        var display = internships.map((internship) => {
+          return <InternshipBox key={internship.id} internship={internship} />
+        })
+      }
       return(
         <div className="internship-list">
           {display}

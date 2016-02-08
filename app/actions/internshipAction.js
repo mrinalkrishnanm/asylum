@@ -19,7 +19,7 @@ class internshipAction {
   }
 
   fetchComplete(res) {
-    return res;
+    return res.internships;
   }
 
   fetchFailure(err) {
