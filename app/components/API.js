@@ -40,7 +40,7 @@ module.exports = {
     var _this = this
     console.log(data)
     request.post(url)
-    .set('Authorization', 'Token token=' + localStorage.token)
+    .set('Authorization', 'Token token=' + localStorage.interno_token)
     .send(data)
     .end((err,res) => {
       _this.handleRequest(res,success,failure)

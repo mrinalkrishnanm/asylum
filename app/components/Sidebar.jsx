@@ -3,7 +3,7 @@ import Router from 'react-router';
 import Gravatar from './Gravatar.jsx';
 import Request from 'superagent';
 import _ from 'lodash';
-
+import {Link} from 'react-router';
 import userStore from '../stores/userStore.js';
 import userAction from '../actions/userAction.js';
 
@@ -20,8 +20,8 @@ class Sidebar extends React.Component{
         		<ul className='sidebar-contents'>
                     <Gravatar email={this.props.user.email} size="80" />
                     <p className="gravatar-title">Welcome {this.props.user.first_name} </p>
-        			<li>Dashboard</li>
-        			<li>Internships</li>
+              <Link to="dashboard"> <li>Dashboard</li> </Link>
+              <Link to="internships"> <li>Internships</li> </Link>
         			<li>Notifications</li>
               <li>Inbox</li>
         			<li>Settings</li>
