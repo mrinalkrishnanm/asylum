@@ -6,6 +6,7 @@ import Request from 'superagent';
 import _ from 'lodash';
 import internshipStore from '../stores/internshipStore.js';
 import ApplyStages from './ApplyStages.jsx';
+import UploadResume from './UploadResume.jsx';
 
 class InternshipApply extends React.Component{
 
@@ -53,6 +54,7 @@ class InternshipApply extends React.Component{
           <p> {description} </p>
         </div>
         <ApplyStages />
+        <UploadResume />
       </div>
     );
   }
