@@ -14,9 +14,7 @@ class InternshipContainer extends React.Component{
 
   render () {
     return (
-      <div>
         <RouteHandler />
-      </div>
     );
   }
 }

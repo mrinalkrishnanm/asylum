@@ -79,6 +79,7 @@ class UploadResume extends React.Component{
 
     /* SEND FILE TO SERVER */
     Request.post(url)
+    .field('user_id', this.state.currentUser.id)
     .attach('resume', file, file.name)
     .end((err,res) => {
       if(res.status == 200)
@@ -88,7 +89,14 @@ class UploadResume extends React.Component{
     })
 
   }
-  
+
+  clickHandler(e) {
+    e.preventDefault();
+    if(this.state.isUploaded)
+      this.viewResume(e);
+    else
+      this.upload(e);
+  }
   render(){
     
     const customStyles = {
@@ -104,19 +112,25 @@ class UploadResume extends React.Component{
       }
     };
 
-    if(this.state.isUploaded)
+    if(this.state.isUploaded) {
       var display = (<Modal isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles} >
           <iframe src={this.state.sessionUrl} style={{height: '600px', width: '800px'}}>
             </iframe>
           </Modal>
-        )
+                    )
+
+      var btnText = "View Resume"
+    }
+    else
+      var btnText = "Upload Resume"
     return(
       <div className="stage-one">
         <input onChange={this.handleFile.bind(this)} type="file" ref="file" className="hidden-btn"/>
-        <button className="upload-resume" onClick={this.upload.bind(this)}>Upload Resume </button>
-        <button className="view-resume" onClick={this.viewResume.bind(this)}>View Resume </button>
+        <div className="grey-container">
+          <button className="upload-resume" onClick={this.clickHandler.bind(this)}>{btnText}</button>
+        </div>
           {display}
       </div>  	
     )

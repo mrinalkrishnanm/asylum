@@ -46,6 +46,13 @@ class InternshipApply extends React.Component{
       var location = internship.location
       var description = internship.description
     }
+
+    if(this.state.currentStage == 1)
+      var stageContent = <UploadResume />
+    else if(this.state.currentStage == 2)
+      var stageContent = <h2> Stage Two </h2>
+    else
+      var stageContent = <h2> Stage Three </h2>
     return (
       <div>
         <div className="internship-apply-box">
@@ -53,8 +60,8 @@ class InternshipApply extends React.Component{
           <small> {location} </small>
           <p> {description} </p>
         </div>
-        <ApplyStages />
-        <UploadResume />
+        <ApplyStages currentStage={this.state.currentStage} />
+        {stageContent}
       </div>
     );
   }

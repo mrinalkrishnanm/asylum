@@ -84,11 +84,16 @@ $light-grey: rgba(0,0,0,0.03)
   .stage-block
     +span-columns(4,block-collapse)
     text-align: center
+    padding-top: 20px
+    color: rgba(114,118,119,0.9)
     height: inherit
     border-right: 1px solid $dark-grey
 
+    p
+      font-style: italic
+
   .stage-block:last-child
-    border: none
+    border-right: none
   
   .stage-block:hover
     background-color: $grey
@@ -96,6 +101,7 @@ $light-grey: rgba(0,0,0,0.03)
 
 .stage-one
   +span-columns(10)
+  margin-top: 50px
     
 .upload-resume
   +span-columns(6)
@@ -104,3 +110,10 @@ $light-grey: rgba(0,0,0,0.03)
 
 .hidden-btn
   display: none 
+
+.grey-container
+  +span-columns(12)
+  background-color: $grey
+  padding: 30px 0
+  height: 100px
+  border-radius: 5px

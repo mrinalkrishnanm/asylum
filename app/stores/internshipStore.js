@@ -4,7 +4,7 @@ import internshipAction from '../actions/internshipAction.js';
 class internshipStore {
   constructor() {
     this.internships = [];
-    this.errorMessage= null;
+    this.currentStage= 1;
     this.bindListeners({
       handleFetchInternship: internshipAction.FETCH_INTERNSHIP,
       handleFetchComplete:internshipAction.FETCH_COMPLETE,
