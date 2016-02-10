@@ -4,6 +4,7 @@ import Request from 'superagent';
 import userStore from '../stores/userStore.js';
 import userAction from '../actions/userAction.js';
 import Modal from 'react-modal';
+import API from './API.js';
 
 class UploadResume extends React.Component{
 
@@ -38,17 +39,7 @@ class UploadResume extends React.Component{
     var elem = document.getElementsByClassName("hidden-btn")[0];
     elem.click();
     console.log('clicked');
-  }
 
-  success(){
-    this.setState({isUploading:false,
-                  isUploaded: true})
-                  console.log("Upload success")
-  }
-
-  failure(){
-    this.setState({isUploading :false})
-    console.log("Upload failed")
   }
 
   viewResume(e) {
@@ -65,21 +56,37 @@ class UploadResume extends React.Component{
     e.preventDefault();
     var file = this.refs.file.files[0]
     console.log(file)
+    var data = {
+      resume: file
+    }
     var _this = this
     var resumeName = this.state.currentUser.username + "Resume"
+    
+    var url = API.url('internizes/upload_resume')
 
-    Request.post("https://upload.view-api.box.com/1/documents")
-    .set('Authorization', 'Token smx1yysqp14gk4f9qvh9j5hudrpqt3of')
-    .set('Content-type', 'multipart/form-data')
-    .set('Content-type', 'application/json')
-    .field('name', resumeName)
-    .attach('file', file, file.name)
+    var success = (res) => {
+      var res = JSON.parse(res.text)
+      console.log(res)
+      this.setState({sessionUrl: res.urls.view})
+      this.setState({isUploaded: true,
+                     isUploading: false});
+    }
+
+    var failure = (res) => {
+      console.log("FAILED")
+      this.setState({isUploading: false})
+    }
+
+    /* SEND FILE TO SERVER */
+    Request.post(url)
+    .attach('resume', file, file.name)
     .end((err,res) => {
       if(res.status == 200)
-        _this.success();
+        success(res)
       else
-        _this.failure();
+        failure(res)
     })
+
   }
   
   render(){
@@ -91,20 +98,26 @@ class UploadResume extends React.Component{
         right                 : 'auto',
         bottom                : 'auto',
         marginRight           : '-50%',
-        transform             : 'translate(-60%, -50%)'
+        height                : '600px',
+        width                 : '840px',
+        transform             : 'translate(-50%, -50%)'
       }
     };
 
+    if(this.state.isUploaded)
+      var display = (<Modal isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={customStyles} >
+          <iframe src={this.state.sessionUrl} style={{height: '600px', width: '800px'}}>
+            </iframe>
+          </Modal>
+        )
     return(
       <div className="stage-one">
         <input onChange={this.handleFile.bind(this)} type="file" ref="file" className="hidden-btn"/>
         <button className="upload-resume" onClick={this.upload.bind(this)}>Upload Resume </button>
         <button className="view-resume" onClick={this.viewResume.bind(this)}>View Resume </button>
-        <Modal isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles} >
-          <h2> Hey I am a modal </h2>
-        </Modal>
+          {display}
       </div>  	
     )
   }
