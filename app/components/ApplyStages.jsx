@@ -10,35 +10,45 @@ class ApplyStages extends React.Component{
   constructor () {
     super()
   }
-
-  applyStyle() {
-
-    var stages = document.getElementsByClassName('stage-block')
-    var stageStyle = "2px solid #6dd42f"
-    if(this.props.currentStage == 1)
-      stages[0].style.borderTop = stageStyle
-    else if(this.props.currentStage == 2)
-      stages[1].style.borderTop = stageStyle
-    else
-      stages[2].style.borderTop = stageStyle
-
+  
+  changeOne(e){
+    e.preventDefault();
+    this.props.change(1)
   }
 
-  componentDidMount() {
-    this.applyStyle();
+  changeTwo(e){
+    e.preventDefault();
+    this.props.change(2)
   }
+
+  changeThree(e){
+    e.preventDefault();
+    this.props.change(3)
+  }
+
   render () {
+    var stageStyle = {
+      borderTop: '2px solid #6dd42f'
+    }
+    
+    if(this.props.currentStage == 1)
+      var styleOne = stageStyle
+    else if(this.props.currentStage == 2)
+      var styleTwo = stageStyle
+    else
+      var styleThree = stageStyle
+
     return (
       <div className="apply-stages">
-        <li className="stage-block"> 
+        <li onClick={this.changeOne.bind(this)} style={styleOne} className="stage-block"> 
           <h2> Upload Resume </h2> 
           <p> ...subtext </p>
         </li>
-        <li className="stage-block"> 
+        <li onClick={this.changeTwo.bind(this)} style={styleTwo} className="stage-block"> 
           <h2> Fill Details </h2>
           <p> ...subtext </p>
         </li>
-        <li className="stage-block"> 
+        <li onClick={this.changeThree.bind(this)} style={styleThree} className="stage-block"> 
           <h2> Applied Successfully! </h2>
           <p> ...subtext </p>
         </li>

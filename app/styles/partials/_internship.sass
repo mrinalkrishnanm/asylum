@@ -55,11 +55,11 @@ $light-grey: rgba(0,0,0,0.03)
   
 
 .internship-apply-box
-  +span-columns(10)
-  margin-top: 20px
+  +span-columns(12)
   border-radius: 5px
   background-color: rgba(0,0,0,0.035)
   padding: 20px
+  margin-bottom: 50px
   box-shadow: 1px 2px 1px rgba(114,118,119,0.2)
 
   small
@@ -117,3 +117,32 @@ $light-grey: rgba(0,0,0,0.03)
   padding: 30px 0
   height: 100px
   border-radius: 5px
+
+.stage-two
+  +span-columns(10)
+  +shift(0.5)
+  margin-top: 50px
+
+  .question-block
+    +span-columns(12)
+    margin-top: 20px
+
+    textarea
+      height: 100px
+
+  button
+    margin-top: 20px
+    background-color: $button-blue
+    +span-columns(8)
+    +shift(2)
+
+
+  .question-container
+    +span-columns(8)
+    +shift(2)
+    margin-top: 20px
+    border-radius: 5px
+    background-color: rgba(0,0,0,0.035)
+    padding: 20px
+    box-shadow: 1px 2px 1px rgba(114,118,119,0.2)
+

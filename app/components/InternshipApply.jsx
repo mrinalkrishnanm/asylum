@@ -7,6 +7,7 @@ import _ from 'lodash';
 import internshipStore from '../stores/internshipStore.js';
 import ApplyStages from './ApplyStages.jsx';
 import UploadResume from './UploadResume.jsx';
+import ResumeDetails from './ResumeDetails.jsx';
 
 class InternshipApply extends React.Component{
 
@@ -27,6 +28,7 @@ class InternshipApply extends React.Component{
   componentDidMount() {
     this.findInternship();
   }
+
   onChange(state){
     this.setState(state, this.findInternship.bind(this))
   }
@@ -38,30 +40,22 @@ class InternshipApply extends React.Component{
     var internship = _.find(internships, {'id': 1});
     this.setState({internship});
   }
-  render () {
-    console.log(this.state)
-    var { internship } = this.state
-    if(!_.isEmpty(internship)) {
-      var position = internship.position
-      var location = internship.location
-      var description = internship.description
-    }
 
+  changeStage(stage){
+    this.setState({currentStage: stage})
+  }
+  render () {
+    const {internship} = this.state
     if(this.state.currentStage == 1)
-      var stageContent = <UploadResume />
+      var stageContent = <UploadResume internship={internship} />
     else if(this.state.currentStage == 2)
-      var stageContent = <h2> Stage Two </h2>
+      var stageContent = <ResumeDetails internship={internship} />
     else
       var stageContent = <h2> Stage Three </h2>
     return (
       <div>
-        <div className="internship-apply-box">
-          <h2> {position} </h2>
-          <small> {location} </small>
-          <p> {description} </p>
-        </div>
-        <ApplyStages currentStage={this.state.currentStage} />
         {stageContent}
+        <ApplyStages change={this.changeStage.bind(this)} currentStage={this.state.currentStage} />
       </div>
     );
   }

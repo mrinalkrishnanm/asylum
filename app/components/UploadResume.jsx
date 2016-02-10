@@ -29,7 +29,6 @@ class UploadResume extends React.Component{
 
   componentDidMount() {
     this.setState({isUploading: false,
-                  isUploaded: false,
                   modalIsOpen: false})
 
   }
@@ -61,7 +60,7 @@ class UploadResume extends React.Component{
     }
     var _this = this
     var resumeName = this.state.currentUser.username + "Resume"
-    
+
     var url = API.url('internizes/upload_resume')
 
     var success = (res) => {
@@ -69,7 +68,7 @@ class UploadResume extends React.Component{
       console.log(res)
       this.setState({sessionUrl: res.urls.view})
       this.setState({isUploaded: true,
-                     isUploading: false});
+                    isUploading: false});
     }
 
     var failure = (res) => {
@@ -98,7 +97,14 @@ class UploadResume extends React.Component{
       this.upload(e);
   }
   render(){
-    
+
+    var { internship } = this.props
+    if(!_.isEmpty(internship)) {
+      var position = internship.position
+      var location = internship.location
+      var description = internship.description
+    }
+
     const customStyles = {
       content : {
         top                   : '50%',
@@ -114,24 +120,30 @@ class UploadResume extends React.Component{
 
     if(this.state.isUploaded) {
       var display = (<Modal isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles} >
-          <iframe src={this.state.sessionUrl} style={{height: '600px', width: '800px'}}>
-            </iframe>
-          </Modal>
+        onRequestClose={this.closeModal}
+        style={customStyles} >
+        <iframe src={this.state.sessionUrl} style={{height: '600px', width: '800px'}}>
+        </iframe>
+      </Modal>
                     )
 
-      var btnText = "View Resume"
+                    var btnText = "View Resume"
     }
     else
       var btnText = "Upload Resume"
     return(
       <div className="stage-one">
+        <div className="internship-apply-box">
+          <h2> {position} </h2>
+          <small> {location} </small>
+          <p> {description} </p>
+        </div>
+
         <input onChange={this.handleFile.bind(this)} type="file" ref="file" className="hidden-btn"/>
         <div className="grey-container">
           <button className="upload-resume" onClick={this.clickHandler.bind(this)}>{btnText}</button>
         </div>
-          {display}
+        {display}
       </div>  	
     )
   }
