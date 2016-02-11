@@ -14,7 +14,6 @@ class UploadResume extends React.Component{
   }
 
   componentWillMount() {
-    userAction.loadCurrent();
     this.onChange = this.onChange.bind(this)
     userStore.listen(this.onChange)
   }

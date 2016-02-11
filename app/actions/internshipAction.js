@@ -25,6 +25,23 @@ class internshipAction {
   fetchFailure(err) {
     return err;
   }
+  
+  updateQuestions(questions){
+    var url = API.url('questions')
+    var _this = this
+    var success = (res) => {
+      console.log(res)
+      console.log("Success")
+      _this.fetchComplete(res.internships)
+    }
+
+    var failure = (err) => {
+      console.log(err)
+      _this.fetchFailure(err)
+    }
+
+    API.put(url,questions,success,failure)
+  }
 
 }
 

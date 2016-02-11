@@ -35,6 +35,16 @@ module.exports = {
     })
   },
 
+  put: function(url,data,success,failure) {
+    var _this = this
+    request.put(url)
+    .set('Authorization', 'Token token=' +localStorage.interno_token)
+    .send(data)
+    .end((err,res) => {
+      _this.handleRequest(res,success,failure)
+    })
+  },
+
 
   post: function(url, data, success, failure) {
     var _this = this
