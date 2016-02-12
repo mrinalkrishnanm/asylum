@@ -24,7 +24,7 @@ class userAction {
   }
 
   loadCurrentComplete(user){
-    return user
+    return user.user
   }
 
   loadCurrentFailure(error) {

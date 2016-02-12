@@ -12,7 +12,6 @@ class Dashboard extends React.Component{
   }
 
    render() {
-    console.log(this.state)
     return(
       <div className='--dashboard'>
         <h1> This is my dashboard component </h1>
