@@ -18,7 +18,7 @@ class InternshipBox extends React.Component{
       <div className="internship-box">
         <div className="internship-box-header">
           <h2> {internship.position} </h2>
-          <h2 className="internship-title"> Spaceback</h2>
+          <h2 className="internship-title"> {internship.created_by.name} </h2>
           <Link to="apply-intern" params={{id: internship.id}}>
             <button> Apply </button>
           </Link>

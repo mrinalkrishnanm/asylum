@@ -5,9 +5,12 @@ import Router from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
 import internshipStore from '../stores/internshipStore.js';
+import internshipAction from '../actions/internshipAction.js'
 import ApplyStages from './ApplyStages.jsx';
 import UploadResume from './UploadResume.jsx';
 import ResumeDetails from './ResumeDetails.jsx';
+import ApplicationSuccess from './ApplicationSuccess.jsx';
+
 
 class InternshipApply extends React.Component{
 
@@ -34,7 +37,6 @@ class InternshipApply extends React.Component{
   }
 
   findInternship() {
-    console.log("ithu vilich")
     var internships = this.state.internships
     var id = this.props.params.id
     var internship = _.find(internships, {'id': 1});
@@ -42,16 +44,19 @@ class InternshipApply extends React.Component{
   }
 
   changeStage(stage){
-    this.setState({currentStage: stage})
+    internshipAction.changeState(stage)
   }
-  render () {
-    const {internship} = this.state
+  
+  
+
+  render () {  
+    const { internship } = this.state
     if(this.state.currentStage == 1)
       var stageContent = <UploadResume internship={internship} />
     else if(this.state.currentStage == 2)
       var stageContent = <ResumeDetails internship={internship} />
     else
-      var stageContent = <h2> Stage Three </h2>
+      var stageContent = <ApplicationSuccess internship={internship} /> 
     return (
       <div>
         {stageContent}

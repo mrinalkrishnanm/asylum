@@ -12,6 +12,13 @@ class InternshipContainer extends React.Component{
     super()
   }
 
+  handleOne() {
+
+  }
+
+  handleTwo() {
+    
+  }
   render () {
     return (
         <RouteHandler />

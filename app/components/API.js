@@ -30,7 +30,9 @@ module.exports = {
   
   get: function(url, success, failure) {
     var _this = this
-    request.get(url, function(err,res) {
+    request.get(url)
+    .set('Authorization', 'Token token=' +localStorage.interno_token)
+    .end(function(err,res) {
       _this.handleRequest(res,success,failure)
     })
   },

@@ -22,6 +22,7 @@ class DashboardContainer extends React.Component{
     this.onChange = this.onChange.bind(this)
     userStore.listen(this.onChange)
     internshipAction.fetchInternship();
+    internshipAction.fetchApplied();
     internshipStore.listen(this.onChange)
   }
 

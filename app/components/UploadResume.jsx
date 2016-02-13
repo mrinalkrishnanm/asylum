@@ -23,15 +23,36 @@ class UploadResume extends React.Component{
   }
 
   onChange(state) {
-    this.setState(state)
+    this.setState(state, this.checkResume.bind(this))
   }
 
   componentDidMount() {
     this.setState({isUploading: false,
                   modalIsOpen: false})
-
   }
 
+  checkResume() {
+
+    var currentUser = this.state.currentUser
+    var id = currentUser.id
+    var url = 'users/'+id+'/check_resume'
+    var _url = API.url(url)
+
+    var success = (res) => {
+      console.log("CHECKED RESUME")
+      console.log(res)
+      this.setState({sessionUrl: res.urls.view,
+      isUploaded: true})
+    }
+
+    var failure = (res) => {
+      console.log(res)
+      console.log("FAILURE")
+    }
+    
+    API.get(_url,success,failure)
+
+  }
   upload(e){
     e.preventDefault();
     var elem = document.getElementsByClassName("hidden-btn")[0];

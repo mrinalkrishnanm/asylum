@@ -5,7 +5,34 @@ $light-grey: rgba(0,0,0,0.03)
 
 .internship-list
   margin-top: 25px
+
+  hr
+    +span-columns(10)
+    margin-top: -10px
+
+.menu
+  +span-columns(4)
+  margin-bottom: 30px
+  font-size: 0.9em
+
+.menu-item
+  +span-columns(4)
+  border-radius: 20px 
+  background-color: white
+  color: $button-blue
+  height: 35px
+  font-size: 0.9em
+
+.active
+  background-color: $button-blue
+  color: white
   
+  
+.menu-item:hover
+  border: 1px solid $button-blue
+  background: white
+  color: $button-blue
+    
 .internship-box
   +span-columns(10)
   border-radius: 5px
@@ -29,9 +56,11 @@ $light-grey: rgba(0,0,0,0.03)
     +shift(1)
     +omega()
     height: 35px
-    font-size: 12px
+    font-size: 0.9em
     margin-top: -8px
+    border-radius: 5px
     float: right
+
     background-color: $button-blue
 
 .internship-title
@@ -39,8 +68,6 @@ $light-grey: rgba(0,0,0,0.03)
   font-size: 1.3em
   +shift(1.5)
 
-
-    
 .internship-box-body
   +span-columns(12)
   
@@ -145,4 +172,58 @@ $light-grey: rgba(0,0,0,0.03)
     background-color: rgba(0,0,0,0.035)
     padding: 20px
     box-shadow: 1px 2px 1px rgba(114,118,119,0.2)
+
+.applied-success
+  +span-columns(10)
+  +shift(1)
+  padding: 20px
+  text-align: center
+
+  .grey-container
+    +span-columns(12)
+    background-color: $light-grey
+    box-shadow: 1px 2px 1px rgba(114,118,119,0.2)
+    color: #686868
+    height: auto !important
+
+    p
+      font-style: italic
+      +span-columns(12)
+
+    h2
+      +span-columns(12)
+    
+    button
+      +span-columns(8)
+      +shift(2)
+      background-color: #67c100
+      background: -webkit-gradient(linear, left top, left bottom, from(#8bd64e), to(#71bb35));
+      background: -webkit-linear-gradient(top, #8bd64e, #71bb35);
+      background: -moz-linear-gradient(top, #67c100, #64b902);
+      background: -ms-linear-gradient(top, #67c100, #64b902);
+      background: -o-linear-gradient(top, #67c100, #64b902);
+
+  .success-icon
+    +span-columns(2)
+    +shift(5.5)
+    background: url('img/tick.png')
+    background-position: center
+    text-align: center
+    background-repeat: no-repeat
+    border-style: none
+    width: 64px
+    height: 64px
+
+        
+        
+.applied-internship-wrapper
+  +span-columns(10)
+
+.applied-internship-box
+  +span-columns(12)
+  padding: 20px
+  background-color: $light-grey
+  box-shadow: 1px 2px 1px rgba(114,118,119,0.2)
+  color: #686868
+  height: auto !important
 
