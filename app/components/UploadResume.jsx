@@ -98,6 +98,7 @@ class UploadResume extends React.Component{
 
     /* SEND FILE TO SERVER */
     Request.post(url)
+    .set('Authorization', 'Token token='+localStorage.interno_token)
     .field('user_id', this.state.currentUser.id)
     .attach('resume', file, file.name)
     .end((err,res) => {

@@ -11,6 +11,9 @@ import InternshipContainer from './components/InternshipContainer.jsx';
 import InternshipApply from './components/InternshipApply.jsx';
 import InternshipList from './components/InternshipList.jsx';
 import UploadResume from './components/UploadResume.jsx';
+import MessageRoute from './components/MessageRoute.jsx';
+import MessageList from './components/MessageList.jsx';
+import MessageBox from './components/MessageBox.jsx';
 
 var routes = (
   <Route name="app" path="/" handler={ App }>
@@ -21,6 +24,10 @@ var routes = (
       <Route name="internships" path="/internships" handler={ InternshipContainer } >
         <DefaultRoute handler={ InternshipList } />
         <Route name="apply-intern" path=":id" handler={ InternshipApply } />
+      </Route>
+      <Route name="messages" path="/messages" handler={ MessageRoute } >
+        <DefaultRoute handler={MessageList} />
+        <Route name="message" path=":id" handler={MessageBox} />
       </Route>
     </Route>
   </Route>

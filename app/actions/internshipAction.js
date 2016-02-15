@@ -34,7 +34,7 @@ class internshipAction {
     var success = (res) => {
       console.log(res)
       console.log("Success")
-      _this.fetchComplete(res.internships)
+      _this.fetchComplete(res)
     }
 
     var failure = (err) => {
