@@ -37,33 +37,6 @@ class UploadResume extends React.Component{
     this.setState({isUploading: false,
       modalIsOpen: false})
   }
-
-  checkResume() {
-
-       /*if(!this.state.isUploaded) {
-      console.log("Checking RESUME")
-      var currentUser = this.state.currentUser
-      var id = currentUser.id
-      var url = 'users/'+id+'/check_resume'
-      var _url = API.url(url)
-      var _this = this
-      var success = (res) => {
-        console.log("CHECKED RESUME")
-        console.log(res)
-        _this.setState({sessionUrl: res.urls.view,
-                      isUploaded: true
-        },internshipAction.changeState(2))
-      }
-
-      var failure = (res) => {
-        console.log(res)
-        console.log("FAILURE")
-      }
-      
-      API.get(_url,success,failure)
-  
-      }*/
-  }
   
   upload(e){
     e.preventDefault();
@@ -130,7 +103,6 @@ class UploadResume extends React.Component{
   }
   
   render() {
-
     var { internship } = this.props
     if(!_.isEmpty(internship)) {
       var position = internship.position
@@ -164,6 +136,7 @@ class UploadResume extends React.Component{
     }
     else
       var btnText = "Upload Resume"
+
     return(
       <div className="stage-one">
         <div className="internship-apply-box">

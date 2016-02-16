@@ -1,6 +1,7 @@
 import alt from '../alt.js';
 import API from '../components/API.js';
 import internshipAction from '../actions/internshipAction.js'
+
 class userAction {
 
   loadCurrent(){
@@ -35,6 +36,7 @@ class userAction {
   isUploaded(bool) {
     return bool;
   }
+  
   hasResume(user){
 
     console.log("Checking RESUME")
@@ -46,18 +48,22 @@ class userAction {
     var success = (res) => {
       console.log("CHECKED RESUME")
       console.log(res)
-      this.isUploaded(true)
+      _this.isUploaded(true)
       internshipAction.unlockStage(2)
-      return res;
-      
+      _this.changeUrl(res)
     }
 
     var failure = (res) => {
       console.log(res)
       console.log("FAILURE")
     }
+
     API.get(_url,success,failure)
 
+  }
+
+  changeUrl(res) {
+    return res;
   }
   
 }
