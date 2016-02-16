@@ -20,13 +20,15 @@ class MessageBox extends React.Component{
     var company = conversation.company
     var messages = conversation.messages
     var msgCount = messages.length
-    var lastMsg = _.last(messages)
+    if(messages.length>0)
+      var lastMsg = _.last(messages).content
+
     return (
       <div key={conversation.id} onClick={this.handleClick.bind(this)} className="message-box">
         <p> Me & {company.name} </p>
         <h4> {msgCount} </h4>        
         <h2> {conversation.subject} </h2>
-        <small> {lastMsg.content} </small>
+        <small> {lastMsg} </small>
       </div>
     );
   }

@@ -13,9 +13,14 @@ class Message extends React.Component{
 
   render () {
     var message = this.props.message
+    console.log(message)
+    if(_.has(message, 'sender.name'))
+      var sender = message.sender.name
+    else
+      var sender = message.sender.first_name
     return (
       <div className="message-container">
-      <h2> Me </h2>
+      <h2> {sender} </h2>
       <p> {message.content} </p>
       </div>
     );
