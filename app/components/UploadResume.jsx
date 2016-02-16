@@ -3,6 +3,8 @@ import Router from 'react-router';
 import Request from 'superagent';
 import userStore from '../stores/userStore.js';
 import userAction from '../actions/userAction.js';
+import internshipStore from '../stores/internshipStore.js'
+import internshipAction from '../actions/internshipAction.js'
 import Modal from 'react-modal';
 import API from './API.js';
 
@@ -16,49 +18,58 @@ class UploadResume extends React.Component{
   componentWillMount() {
     this.onChange = this.onChange.bind(this)
     userStore.listen(this.onChange)
+    internshipStore.listen(this.onChange)
   }
 
   componentWillUnmount(){
     userStore.unlisten(this.onChange)
+    internshipStore.unlisten(this.onChange)
   }
 
   onChange(state) {
-    this.setState(state, this.checkResume.bind(this))
+    this.setState(state)
   }
 
   componentDidMount() {
+    console.log(this.state.isUploaded)
+    if(!this.state.isUploaded)
+      userAction.hasResume(this.state.currentUser)    
     this.setState({isUploading: false,
-                  modalIsOpen: false})
+      modalIsOpen: false})
   }
 
   checkResume() {
 
-    var currentUser = this.state.currentUser
-    var id = currentUser.id
-    var url = 'users/'+id+'/check_resume'
-    var _url = API.url(url)
+       /*if(!this.state.isUploaded) {
+      console.log("Checking RESUME")
+      var currentUser = this.state.currentUser
+      var id = currentUser.id
+      var url = 'users/'+id+'/check_resume'
+      var _url = API.url(url)
+      var _this = this
+      var success = (res) => {
+        console.log("CHECKED RESUME")
+        console.log(res)
+        _this.setState({sessionUrl: res.urls.view,
+                      isUploaded: true
+        },internshipAction.changeState(2))
+      }
 
-    var success = (res) => {
-      console.log("CHECKED RESUME")
-      console.log(res)
-      this.setState({sessionUrl: res.urls.view,
-      isUploaded: true})
-    }
-
-    var failure = (res) => {
-      console.log(res)
-      console.log("FAILURE")
-    }
-    
-    API.get(_url,success,failure)
-
+      var failure = (res) => {
+        console.log(res)
+        console.log("FAILURE")
+      }
+      
+      API.get(_url,success,failure)
+  
+      }*/
   }
+  
   upload(e){
     e.preventDefault();
     var elem = document.getElementsByClassName("hidden-btn")[0];
     elem.click();
     console.log('clicked');
-
   }
 
   viewResume(e) {
@@ -87,8 +98,8 @@ class UploadResume extends React.Component{
       var res = JSON.parse(res.text)
       console.log(res)
       this.setState({sessionUrl: res.urls.view})
-      this.setState({isUploaded: true,
-                    isUploading: false});
+      this.setState({isUploading: false});
+      userAction.isUploaded(true)
     }
 
     var failure = (res) => {
@@ -117,7 +128,8 @@ class UploadResume extends React.Component{
     else
       this.upload(e);
   }
-  render(){
+  
+  render() {
 
     var { internship } = this.props
     if(!_.isEmpty(internship)) {
@@ -148,7 +160,7 @@ class UploadResume extends React.Component{
       </Modal>
                     )
 
-                    var btnText = "View Resume"
+      var btnText = "View Resume"
     }
     else
       var btnText = "Upload Resume"

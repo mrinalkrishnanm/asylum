@@ -20,7 +20,11 @@ class InternshipList extends React.Component{
   }
   
   onChange(state){
-    this.setState(state, this.handleOne)
+    this.setState(state)
+  }
+
+  componentDidMount() {
+    this.handleOne();
   }
 
   handleOne() {

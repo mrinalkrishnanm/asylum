@@ -28,12 +28,14 @@ class internshipAction {
 
 
   
-  updateQuestions(questions){
+  updateQuestions(questions, submitApp){
     var url = API.url('questions')
     var _this = this
+    console.log(submitApp)
     var success = (res) => {
       console.log(res)
       console.log("Success")
+      submitApp();
       _this.fetchComplete(res)
     }
 
@@ -46,6 +48,10 @@ class internshipAction {
   }
 
   changeState(stage) {
+    return stage;
+  }
+
+  unlockStage(stage) {
     return stage;
   }
 

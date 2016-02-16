@@ -4,26 +4,44 @@ import React from 'react';
 import Router from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
+import internshipStore from '../stores/internshipStore.js'
 
 class ApplyStages extends React.Component{
 
   constructor () {
     super()
+    this.state = internshipStore.getState();
+  }
+
+  componentWillMount() {
+    this.onChange = this.onChange.bind(this)
+    internshipStore.listen(this.onChange)
+  }
+
+  componentWillUnmount() {
+    internshipStore.unlisten(this.onChange)
+  }
+
+  onChange(state) {
+    this.setState(state)
   }
   
   changeOne(e){
     e.preventDefault();
-    this.props.change(1)
+    if(this.state.unlockOne)
+      this.props.change(1)
   }
 
   changeTwo(e){
     e.preventDefault();
-    this.props.change(2)
+    if(this.state.unlockTwo)
+      this.props.change(2)
   }
 
   changeThree(e){
     e.preventDefault();
-    this.props.change(3)
+    if(this.state.unlockThree)
+      this.props.change(3)
   }
 
   render () {

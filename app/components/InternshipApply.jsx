@@ -28,10 +28,11 @@ class InternshipApply extends React.Component{
     internshipStore.unlisten(this.onChange)
   }
 
+
   componentDidMount() {
     this.findInternship();
   }
-
+  
   onChange(state){
     this.setState(state, this.findInternship.bind(this))
   }
@@ -39,7 +40,11 @@ class InternshipApply extends React.Component{
   findInternship() {
     var internships = this.state.internships
     var id = this.props.params.id
-    var internship = _.find(internships, {'id': 1});
+    var internship = _.filter(internships, (item) => {
+     return item.id == id
+    });
+    internship = internship[0]
+    console.log(internship)
     this.setState({internship});
   }
 
@@ -52,11 +57,11 @@ class InternshipApply extends React.Component{
   render () {  
     const { internship } = this.state
     if(this.state.currentStage == 1)
-      var stageContent = <UploadResume internship={internship} />
+      var stageContent = <UploadResume change={this.changeStage.bind(this)} internship={internship} />
     else if(this.state.currentStage == 2)
-      var stageContent = <ResumeDetails internship={internship} />
+      var stageContent = <ResumeDetails change={this.changeStage.bind(this)} internship={internship} />
     else
-      var stageContent = <ApplicationSuccess internship={internship} /> 
+      var stageContent = <ApplicationSuccess change={this.changeStage.bind(this)} internship={internship} /> 
     return (
       <div>
         {stageContent}

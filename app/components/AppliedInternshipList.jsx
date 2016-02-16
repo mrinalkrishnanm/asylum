@@ -14,7 +14,20 @@ class AppliedInternshipList extends React.Component{
     super()
     this.state = internshipStore.getState()
   }
+  
+  componentWillMount(){
+    internshipAction.fetchApplied();
+    this.onChange = this.onChange.bind(this)
+    internshipStore.listen(this.onChange)
+  }
 
+  componentWillUnmount(){
+    internshipStore.unlisten(this.onChange)
+  }
+
+  onChange(state){
+    this.setState(state)
+  }
 
   render () {
     var applied = this.props.applied
@@ -24,7 +37,7 @@ class AppliedInternshipList extends React.Component{
       var successMsg = "You have been offered the position of " + item.position
       var msg = item.internizes[0].status == "reviewed" ? "Your application is being reviewed" : successMsg
       return(
-        <div key={item.id} className="internship-box">
+        <div key={item.internizes[0].id} className="internship-box">
           <div className="internship-box-header">
             <h2> {item.position} </h2>
             <h2 className="internship-title"> {item.created_by.name} </h2>

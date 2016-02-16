@@ -6,39 +6,72 @@ import Request from 'superagent';
 import _ from 'lodash';
 import internshipAction from '../actions/internshipAction.js'
 import internshipStore from '../stores/internshipStore.js'
+import userStore from '../stores/userStore.js'
+import API from './API.js'
+
+
 class ResumeDetails extends React.Component{
 
   constructor () {
     super()
+    this.state = userStore.getState()
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  updateAnswer(internize_id) {
+
     var inputs = document.getElementsByTagName('textarea')
-    var questions = this.props.internship.questions
 
-    for(var i=0;i<questions.length;i++) 
-      {
-        for(var j=0;j<inputs.length;j++)
-          {
-            if(inputs[i].dataset.id == questions[i].id)
-              {
-                questions[i].answer = inputs[i].value;
-
-              }
-          }
-      }
+    var data = {
+      answers: []
+    }
 
 
-      console.log(questions)
+    for(var i=0;i < inputs.length;i++){
+      var answer = {}
+      answer.question_id = inputs[i].dataset.id
+      answer.content = inputs[i].value
+      answer.internize_id = internize_id
+      data.answers.push(answer)
+    }
 
-      var data = {
-        questions: questions
-      }
+    var success = (res) => {
+      console.log(res)
+      internshipAction.unlockStage(3)
+    }
 
-     internshipAction.updateQuestions(data)
-  }    
+    var failure = (res) => {
+      console.log(res)
+    }
 
+    var url = API.url('answers')
+
+    API.post(url,data,success,failure)
+
+  }
+  
+  submitApplication(e) {
+    e.preventDefault();
+    console.log("SUBMITTING")
+    
+    var url = API.url("internizes")
+    var _this = this
+
+    var success = (res) => {
+      console.log("Application Submitted")
+      console.log(res)
+      _this.updateAnswer(res.internize.id);
+    }
+    var failure = (res) => {
+      console.log("FAILURE")
+    }
+    var data = {
+      internship_id: this.props.internship.id,
+      user_id: this.state.currentUser.id
+    }
+    API.post(url,data,success,failure)
+  }
+
+  
   render () {
     var internship = this.props.internship
     var questions = internship.questions
@@ -58,7 +91,7 @@ class ResumeDetails extends React.Component{
               <div className="question-container">
                 {displayQn}
               </div>
-              <button onClick={this.handleSubmit.bind(this)}> Submit </button>
+              <button onClick={this.submitApplication.bind(this)}> Submit </button>
 
             </div>
     );
