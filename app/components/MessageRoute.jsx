@@ -14,7 +14,9 @@ class MessageRoute extends React.Component{
 
   render () {
     return (
-      <RouteHandler />
+      <div className="message-wrapper">
+        <RouteHandler />
+      </div>
     );
   }
 }

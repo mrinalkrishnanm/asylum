@@ -41,7 +41,9 @@ class internshipStore {
     else if(stage==2)
       this.setState({unlockTwo: true})
     else
-      this.setState({unlockThree: true})
+      this.setState({unlockThree: true,
+                     unlockTwo: false,
+                     unlockOne: false})
   }
 
   handleChangeState(stage) {

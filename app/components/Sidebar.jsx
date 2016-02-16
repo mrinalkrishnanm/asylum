@@ -23,7 +23,7 @@ class Sidebar extends React.Component{
               <Link to="dashboard"> <li>Dashboard</li> </Link>
               <Link to="internships"> <li>Internships</li> </Link>
         			<li>Notifications</li>
-              <li>Inbox</li>
+              <Link to="messages"> <li>Inbox</li> </Link>
         			<li>Settings</li>
         		</ul>
     		</div>

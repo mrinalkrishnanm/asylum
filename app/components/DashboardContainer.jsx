@@ -8,7 +8,8 @@ import userStore from '../stores/userStore.js';
 import { RouteHandler } from 'react-router';
 import internshipStore from '../stores/internshipStore.js';
 import internshipAction from '../actions/internshipAction.js';
-
+import conversationStore from '../stores/conversationStore.js';
+import conversationAction from '../actions/conversationAction.js';
 
 class DashboardContainer extends React.Component{
   constructor() {
@@ -21,6 +22,7 @@ class DashboardContainer extends React.Component{
     userAction.loadCurrent();
     this.onChange = this.onChange.bind(this)
     userStore.listen(this.onChange)
+    conversationAction.fetchAll();
     internshipAction.fetchInternship();
     internshipAction.fetchApplied();
     internshipStore.listen(this.onChange)

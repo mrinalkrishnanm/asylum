@@ -14,7 +14,6 @@ class userAction {
     var success = (res) => {
       console.log(res);
       _this.loadCurrentComplete(res);
-      _this.hasResume(res.user)
       console.log("Success")
     }
     var failure = (res) => {

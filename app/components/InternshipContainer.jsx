@@ -11,14 +11,6 @@ class InternshipContainer extends React.Component{
   constructor () {
     super()
   }
-
-  handleOne() {
-
-  }
-
-  handleTwo() {
-    
-  }
   render () {
     return (
         <RouteHandler />
