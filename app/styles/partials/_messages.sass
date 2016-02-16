@@ -10,6 +10,7 @@
 .message-box
   border-bottom: 1px solid $dark-grey
   padding: 20px 10px
+  cursor: pointer
 
   p
     font-size: 0.8em
@@ -27,7 +28,43 @@
     margin-bottom: 0px
     border-radius: 2px
     padding: 2px 5px
-    margin-top: 2px
+    margin-top: 1px
   small 
     color: #bdbdbd
-    
+
+
+.message-view
+  +span-columns(8)
+  background-color: white
+  height: 100%
+  padding: 20px 20px
+  border-left: 1px solid $dark-grey
+
+  h2
+    font-size: 1.4em
+    font-weight: 400
+
+  p
+    color: #bdbdbd
+    font-weight: 300
+
+
+.message-container-list
+  +span-columns(12)
+  overflow: scroll
+  height: 80%
+
+.message-container
+  +span-columns(12)
+  padding: 20px
+  border-radius: 10px
+  color: black
+  border: 1px solid $dark-grey
+  margin-bottom: 20px
+
+  h2
+    +span-columns(12)
+    font-size: 1em
+    font-weight: 400
+    padding-bottom: 10px
+    border-bottom: 1px solid $dark-grey

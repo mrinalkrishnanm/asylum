@@ -11,18 +11,22 @@ class MessageBox extends React.Component{
     super()
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    this.props.showMessage(this.props.conversation)
+  }
   render () {
     var conversation = this.props.conversation
-    var company = conversation.company.name
+    var company = conversation.company
     var messages = conversation.messages
     var msgCount = messages.length
     var lastMsg = _.last(messages)
     return (
-      <div key={conversation.id} className="message-box">
-        <p> Me & {company} </p>
+      <div key={conversation.id} onClick={this.handleClick.bind(this)} className="message-box">
+        <p> Me & {company.name} </p>
+        <h4> {msgCount} </h4>        
         <h2> {conversation.subject} </h2>
         <small> {lastMsg.content} </small>
-        <h4> {msgCount} </h4>
       </div>
     );
   }
