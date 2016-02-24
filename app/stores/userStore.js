@@ -4,6 +4,7 @@ import userAction from '../actions/userAction.js';
 import internshipAction from '../actions/internshipAction.js';
 
 class userStore {
+  
   constructor() {
     this.currentUser = undefined;
     this.errorMessage = null;
@@ -21,12 +22,15 @@ class userStore {
   handleChangeUrl(res) {
     this.setState({sessionUrl: res.urls.view})
   }
+
   handleIsUploaded(bool) {
     this.setState({isUploaded: bool})
   }
+
   handleHasResume(res) {
     console.log("Has Resume")
   }
+
   handleLoadCurrent() {
     this.currentUser = undefined
   }

@@ -14,7 +14,10 @@ import UploadResume from './components/UploadResume.jsx';
 import MessageRoute from './components/MessageRoute.jsx';
 import MessageList from './components/MessageList.jsx';
 import MessageBox from './components/MessageBox.jsx';
-
+import CompanyRegister from './components/CompanyRegister.jsx'
+import CompanyLogin from './components/CompanyLogin.jsx';
+import CompanyDashboardContainer from './components/CompanyDashboardContainer.jsx';
+import CompanyDashboard from './components/CompanyDashboard.jsx';
 var routes = (
   <Route name="app" path="/" handler={ App }>
   	<Route name="register" path="/register" handler={ Register } />
@@ -30,6 +33,13 @@ var routes = (
         <Route name="message" path=":id" handler={MessageBox} />
       </Route>
     </Route>
+
+    <Route name="company-register" path="/company/register" handler={ CompanyRegister } />
+    <Route name="company-login" path="/company/login" handler={ CompanyLogin } />
+    <Route name="company-dashboard-container" path="company/dashboard" handler={ CompanyDashboardContainer }>
+      <DefaultRoute name="company-dashboard" handler={ CompanyDashboard } />
+    </Route>
+    
   </Route>
 );
 

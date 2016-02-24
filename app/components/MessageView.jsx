@@ -53,6 +53,8 @@ class MessageView extends React.Component{
       _this.refs.reply.value = ""
     }
 
+    //counter not incrementing, so actions up will be better.
+
     var failure = (res) => {
       console.log(res)
       console.log("SUCH A FAIL")
