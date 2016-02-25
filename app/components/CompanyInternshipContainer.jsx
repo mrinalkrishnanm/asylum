@@ -1,11 +1,11 @@
 "use strict";
 
 import React from 'react';
-import Router from 'react-router';
+import Router, { RouteHandler } from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
 
-class CompanyInternshipNew extends React.Component{
+class CompanyInternshipContainer extends React.Component{
 
   constructor () {
     super()
@@ -13,9 +13,9 @@ class CompanyInternshipNew extends React.Component{
 
   render () {
     return (
-      <h2> New Internship </h2>
+      <RouteHandler />
     );
   }
 }
 
-module.exports = CompanyInternshipNew;
+module.exports = CompanyInternshipContainer;

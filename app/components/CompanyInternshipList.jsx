@@ -5,7 +5,7 @@ import Router from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
 
-class CompanyInternshipNew extends React.Component{
+class CompanyInternshipList extends React.Component{
 
   constructor () {
     super()
@@ -13,9 +13,9 @@ class CompanyInternshipNew extends React.Component{
 
   render () {
     return (
-      <h2> New Internship </h2>
+      <h2> Some list </h2>
     );
   }
 }
 
-module.exports = CompanyInternshipNew;
+module.exports = CompanyInternshipList;
