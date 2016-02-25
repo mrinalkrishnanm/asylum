@@ -33,7 +33,6 @@ class CompanyDashboardContainer extends React.Component{
   }
   
   render () {
-    console.log(this.state.currentCompany)
     if(!_.isEmpty(this.state.currentCompany)) {
       var currentCompany = this.state.currentCompany
       var display = <CompanySidebar user={currentCompany} />

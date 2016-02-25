@@ -79,6 +79,20 @@ class internshipAction {
   }
 
 
+  addInternship(data,success) {
+    
+    var url = API.url('internships')
+    var complete = (res) => {
+      console.log(res)
+    
+      success();
+    }
+    var failure = (res) => {
+      console.log(res)
+    }
+    API.post(url,data,complete,failure)
+  }
+
 }
 
 module.exports = alt.createActions(internshipAction);
