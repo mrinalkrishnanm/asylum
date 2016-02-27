@@ -22,6 +22,7 @@ import CompanyDashboard from './components/CompanyDashboard.jsx';
 import CompanyInternshipContainer from './components/CompanyInternshipContainer.jsx';
 import CompanyInternshipList from './components/CompanyInternshipList.jsx';
 import CompanyInternshipNew from './components/CompanyInternshipNew.jsx';
+import CompanyInternshipTable from './components/CompanyInternshipTable.jsx'
 
 var routes = (
   <Route name="app" path="/" handler={ App }>
@@ -46,6 +47,7 @@ var routes = (
       <DefaultRoute name="company-dashboard" handler={ CompanyDashboard } />
       <Route name="company-internships" path="/company/internships" handler= { CompanyInternshipContainer } >
         <DefaultRoute handler={ CompanyInternshipList } />
+        <Route name='internship-table' path=":id" handler={ CompanyInternshipTable } />
         <Route name="company-new-internship" path="new" handler= { CompanyInternshipNew } />
       </Route>
     </Route>
