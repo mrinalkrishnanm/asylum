@@ -2,7 +2,7 @@ import alt from '../alt.js';
 import API from '../components/API.js';
 
 class companyAction {
-  
+
   loadCurrent() {
     var url = API.url('tokens/verify_token')
     var data = {
@@ -31,6 +31,26 @@ class companyAction {
   loadCurrentFailure(res) {
     return res;
   }
+
+  loadCreated() {
+    var url = API.url('internships/company_internships')
+
+    var _this = this
+    var success = (res) => {
+      _this.loadCreatedComplete(res);
+    }
+
+    var failure = (res) => {
+      console.log("failure")
+    }
+
+    API.get(url,success,failure)
+  }
+  
+  loadCreatedComplete(res) {
+    return res;
+  }
+
 }
 
 module.exports = alt.createActions(companyAction);

@@ -13,7 +13,7 @@ class CompanyInternshipContainer extends React.Component{
 
   render () {
     return (
-      <RouteHandler />
+      <RouteHandler internships={this.props.created}/>
     );
   }
 }

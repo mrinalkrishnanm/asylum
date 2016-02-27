@@ -20,6 +20,7 @@ class CompanyDashboardContainer extends React.Component{
   componentWillMount() {
     var _this = this
     companyAction.loadCurrent();
+    companyAction.loadCreated();
     this.onChange = this.onChange.bind(this)
     companyStore.listen(this.onChange)
   }
@@ -41,7 +42,7 @@ class CompanyDashboardContainer extends React.Component{
       <div className="dashboard-wrapper">
         {display}
         <div className="dashboard-container">
-          <RouteHandler />
+          <RouteHandler currentCompany={this.state.currentCompany} created={this.state.companyInternships}/>
         </div>
       </div>
     );

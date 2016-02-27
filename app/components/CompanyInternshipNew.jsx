@@ -51,7 +51,7 @@ class CompanyInternshipNew extends React.Component{
   }
   render () {
     return (
-      <div>
+      <div className="new-internship">
         <h2>Add new internship</h2>
         <input ref="position" placeholder="Position" name="position" />
         <input ref="stipend" placeholder="Stipend" name="stipend" />

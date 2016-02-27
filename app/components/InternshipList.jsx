@@ -11,7 +11,7 @@ class InternshipList extends React.Component{
     this.state = internshipStore.getState();
   }
   componentWillMount(){
-    this.onChange=this.onChange.bind(this)
+    this.onChange = this.onChange.bind(this)
     internshipStore.listen(this.onChange)
   }
   

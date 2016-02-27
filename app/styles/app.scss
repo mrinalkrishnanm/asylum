@@ -13,6 +13,7 @@ $button-blue: #157dfd;
 @import "partials/dashboard.sass";
 @import "partials/internship.sass";
 @import "partials/messages.sass";
+@import "partials/company.sass";
 
 * {
   margin: 0;
@@ -56,4 +57,8 @@ html {
 }
 .submit-long{
   @include span-columns(12)
+}
+
+.orange-btn {
+  background-color: #ff9f15
 }
