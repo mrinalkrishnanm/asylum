@@ -47,3 +47,41 @@
     height: 35px
     font-size: 0.8em
 
+.internship-table
+  +span-columns(9.5 of 12)
+  padding-top: 20px
+
+
+.grey-box
+  margin-top: 20px
+  +span-columns(12)
+
+  h2
+    +span-columns(3)
+
+  button
+    +span-columns(2)
+    +shift(7)
+    +omega()
+    height: 35px
+    font-size: 0.8em
+    background-color: $button-blue
+    float: right
+
+  p
+    margin-top: 20px
+    +span-columns(12)
+
+  small
+    +span-columns(1.5)
+    font-size: 0.85em
+    border-radius: 20px
+    font-weight: 400
+    border: 2px solid $light-blue
+    text-align: center
+    color: $light-blue
+    padding: 3px
+    
+.applicant-list
+  +span-columns(12)
+  margin-top: 20px

@@ -51,6 +51,6 @@ class companyAction {
     return res;
   }
 
-}
+  }
 
 module.exports = alt.createActions(companyAction);
