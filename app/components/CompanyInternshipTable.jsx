@@ -1,15 +1,30 @@
 "use strict";
 
 import React from 'react';
-import Router from 'react-router';
+import Router, { Link } from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
 import companyAction from '../actions/companyAction.js'
+import companyStore from '../stores/companyStore.js';
 
 class CompanyInternshipTable extends React.Component{
 
   constructor () {
     super()
+  }
+  
+  componentWillMount() {
+    companyAction.fetchApplications(this.props.params.id)
+    this.onChange = this.onChange.bind(this)
+    companyStore.listen(this.onChange)
+  }
+
+  componentWillUnmount() {
+    companyStore.unlisten(this.onChange)
+  }
+
+  onChange(state) {
+    this.setState(state)
   }
 
   render () {
@@ -33,13 +48,16 @@ class CompanyInternshipTable extends React.Component{
         var applications = internship.internizes /* APPLICATIONS */
 
         var counter = 0;
+        var app_id = 0;
         if(!_.isEmpty(applicants))
           var display = applicants.map((u) => {
             ++counter;
             var application = _.filter(applications, (a) => {
+              app_id = a.id              
               return a.user_id = u.id
             })[0];
-            console.log(application)
+
+
             var status = _.capitalize(application.condition)
             if (status == "Reviewed")
               var infoStyle = "status-msg orange"
@@ -55,7 +73,7 @@ class CompanyInternshipTable extends React.Component{
                   <td>{counter} </td>
                   <td> {u.first_name} {u.last_name} </td>
                   <td><span className={infoStyle}>{status}</span></td>
-                  <td> <button> View </button> </td>
+                  <td><Link to="application" params={{id:app_id}}> <button> View </button> </Link></td>
                 </tr>
             )
           })

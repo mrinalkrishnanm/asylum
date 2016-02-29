@@ -7,12 +7,14 @@ class companyStore {
   constructor() {
     this.currentCompany = undefined;
     this.companyInternships = [];
+    this.applications = [];
     this.bindListeners({
       handleLoadCurrent: companyAction.LOAD_CURRENT,
       handleLoadCurrentComplete: companyAction.LOAD_CURRENT_COMPLETE,
       handleLoadCurrentFailure: companyAction.LOAD_CURRENT_FAILURE,
       handleLoadCreated: companyAction.LOAD_CREATED,
       handleLoadCreatedComplete: companyAction.LOAD_CREATED_COMPLETE,
+      handleFetchApplicationsComplete: companyAction.FETCH_APPLICATIONS_COMPLETE
     })
   }
 
@@ -40,6 +42,11 @@ class companyStore {
   handleFetchApplicantsComplete(res) {
     this.setState({applicants: res.users})
   }
+
+  handleFetchApplicationsComplete(res) {
+    this.setState({applications:res})
+  }
+
 }
 
 module.exports = alt.createStore(companyStore,'companyStore')

@@ -92,7 +92,7 @@ class internshipAction {
     }
     API.post(url,data,complete,failure)
   }
-
+  
 }
 
 module.exports = alt.createActions(internshipAction);

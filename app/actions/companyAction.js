@@ -46,11 +46,31 @@ class companyAction {
 
     API.get(url,success,failure)
   }
-  
+
   loadCreatedComplete(res) {
     return res;
   }
 
+  fetchApplications(id) {
+    var _url = "internships/"+id+"/find_internizes"
+    var url = API.url(_url)
+    var success = (res) => {
+      console.log(res)
+      this.fetchApplicationsComplete(res)
+    }
+    var failure = (res) => {
+      console.log(res)
+    }
+
+    API.get(url,success,failure)
   }
+
+  fetchApplicationsComplete(res) {
+    return res.internizes;
+  }
+
+
+
+}
 
 module.exports = alt.createActions(companyAction);

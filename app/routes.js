@@ -24,6 +24,8 @@ import CompanyInternshipList from './components/CompanyInternshipList.jsx';
 import CompanyInternshipNew from './components/CompanyInternshipNew.jsx';
 import CompanyInternshipTable from './components/CompanyInternshipTable.jsx'
 
+import ApplicationContainer from './components/ApplicationContainer.jsx';
+
 var routes = (
   <Route name="app" path="/" handler={ App }>
   	<Route name="register" path="/register" handler={ Register } />
@@ -50,6 +52,10 @@ var routes = (
         <Route name='internship-table' path=":id" handler={ CompanyInternshipTable } />
         <Route name="company-new-internship" path="new" handler= { CompanyInternshipNew } />
       </Route>
+
+      <Route name="application" path="/applications/:id" handler = { ApplicationContainer } />
+
+
     </Route>
     
   </Route>
