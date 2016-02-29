@@ -28,18 +28,39 @@ class CompanyInternshipTable extends React.Component{
 
         var { position, description, duration, stipend, location } = internship
         console.log(internship)
-        var applicants = internship.users
+
+        var applicants = internship.users /*APPLICANTS */
+        var applications = internship.internizes /* APPLICATIONS */
+
+        var counter = 0;
         if(!_.isEmpty(applicants))
-          var display = applicants.map((u)=>{
+          var display = applicants.map((u) => {
+            ++counter;
+            var application = _.filter(applications, (a) => {
+              return a.user_id = u.id
+            })[0];
+            console.log(application)
+            var status = _.capitalize(application.condition)
+            if (status == "Reviewed")
+              var infoStyle = "status-msg orange"
+            else if (status == "Hired")
+              var infoStyle = "status-msg green"
+            else if (status == "Rejected")
+              var infoStyle = "status-msg red"
+            else
+              var infoStyle = "status-msg"
+      
             return (
-                <tr>
-                  <td> u.first_name + " " + u.last_name </td>
-                  <td> <button className="orange-btn"> View </button> </td>
+              <tr>
+                  <td>{counter} </td>
+                  <td> {u.first_name} {u.last_name} </td>
+                  <td><span className={infoStyle}>{status}</span></td>
+                  <td> <button> View </button> </td>
                 </tr>
             )
           })
         else
-          var display = <p style={{textAlign: 'center'}}> There are no applicants yet </p>
+          var _display = <p className="info-msg">There are no applicants yet</p>
 
       }
       return (
@@ -57,8 +78,9 @@ class CompanyInternshipTable extends React.Component{
             <table>
               <thead>
                 <tr>
+                  <th> # </th>
                   <th> Name </th>
-                  <th> Phone Number </th>
+                  <th> Status </th>
                   <th> Action </th>
                 </tr>
               </thead>
@@ -66,6 +88,7 @@ class CompanyInternshipTable extends React.Component{
                 {display}
               </tbody>
             </table>
+            {_display}            
           </div>
         </div>
       );
