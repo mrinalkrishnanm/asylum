@@ -118,6 +118,8 @@
 
 .application-info
   +span-columns(9.5 of 12)
+  border-bottom: 1px solid $dark-grey
+  padding-bottom: 20px
 
 .user-info-container
   +span-columns(12)
@@ -133,13 +135,18 @@
   height: 0
 
   h2
-    +span-columns(10)
+    +span-columns(12)
     font-size: 2em
     font-weight: 400
     position: absolute
     top: 50%
     margin-top: -0.5em
 
+  small
+    font-size: 0.9em
+    +span-columns(12)
+    color: $dark-grey
+    
 .user-avatar
   +span-columns(2)
   text-align: center

@@ -69,9 +69,12 @@ class ApplicationContainer extends React.Component{
               <span>{avatarName}</span>
             </div>
             <div className="application-title">
-              <h2> Mrinal Krishnan </h2>
+              <h2>{user.first_name} {user.last_name}</h2>
+              <small style={{marginTop: "1.4em"}}>@{user.username}</small>
+              <small>{user.email}</small>
             </div>
           </div>
+          
         </div>
       )
     }
