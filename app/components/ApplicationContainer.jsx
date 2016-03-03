@@ -5,6 +5,7 @@ import Router from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
 import companyStore from '../stores/companyStore.js';
+import companyAction from '../actions/companyAction.js';
 
 class ApplicationContainer extends React.Component{
 
@@ -13,33 +14,69 @@ class ApplicationContainer extends React.Component{
     this.state = companyStore.getState()
   }
 
-  componentDidMount() {
-    this.findApplication();
+
+  componentWillMount() {
+    companyAction.fetchApplication(this.props.params.id)    
+    this.onChange = this.onChange.bind(this)
+    companyStore.listen(this.onChange)
   }
 
-  findApplication() {
-    var id = this.props.params.id
-    var applications = this.state.applications
-    console.log(applications)
-    var application = _.filter(applications, (a) => {
-      return a.id == id
-    })[0]
+  componentWillUnmount() {
+    companyStore.unlisten(this.onChange)
+  }
 
-    this.setState({application:application}, this.checkValue.bind(this))
+  onChange(state) {
+    console.log("State change")
+    this.setState(state, this.changeStyle.bind(this))
+  }
+
+  changeStyle() {
+    var avatar = document.getElementsByClassName('user-avatar')[0]
+    if(avatar != undefined)
+      avatar.style.clientHeight = avatar.style.clientWidth
+    console.log("executed")
 
   }
 
-  checkValue() {
-    if (_.isEmpty(this.state.application))
-      this.context.router.transitionTo('company-internships')
-  }
 
   render () {
     var application = this.state.application
-    if(!_.isEmpty(application))
-      var display = <h2> {application.id} </h2>
+    var internships = this.props.internships
+
+    console.log(this.state.application)
+
+    if(!_.isEmpty(application)) {
+      var internship = _.filter(internships,function(item) {
+        return item.id == application.internship_id
+      })[0] // GET APPLIED INTERNSHIP
+
+      var user = _.filter(internship.users,function(item) {
+        return item.id == application.user_id
+      })[0] // GET APPLICANT
+    }
+
+    //console.log(internship)
+    //console.log(user)
+
+    if(!_.isEmpty(user)) {
+      var avatarName = user.first_name.charAt(0) + user.last_name.charAt(0)
+    }
+    if(!_.isEmpty(application)) {
+      var display = (
+        <div className="application-info">
+          <div className="user-info-container">
+            <div className="user-avatar">
+              <span>{avatarName}</span>
+            </div>
+            <div className="application-title">
+              <h2> Mrinal Krishnan </h2>
+            </div>
+          </div>
+        </div>
+      )
+    }
     else
-      var display = <h2> Hello </h2>
+      display = "Loading"
     return (
       <div>
         {display}

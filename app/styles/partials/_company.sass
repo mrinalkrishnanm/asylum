@@ -115,3 +115,49 @@
       font-size: 0.9em
       background-color: $button-blue
 
+
+.application-info
+  +span-columns(9.5 of 12)
+
+.user-info-container
+  +span-columns(12)
+  margin-top: 25px
+  border-radius: 5px
+  min-height: 50px
+
+
+.application-title
+  position: relative
+  +span-columns(10)
+  padding: 7.351% 0;
+  height: 0
+
+  h2
+    +span-columns(10)
+    font-size: 2em
+    font-weight: 400
+    position: absolute
+    top: 50%
+    margin-top: -0.5em
+
+.user-avatar
+  +span-columns(2)
+  text-align: center
+  position: relative
+  background-color: $light-grey
+  color: $dark-grey
+  height: 0
+  padding: 7.351% 0
+  display: inline-block
+  border-radius: 50%
+
+  span
+    display: block
+    position: absolute
+    left: 0
+    right: 0
+    top: 50%
+    font-size: 2em
+    margin-top: -0.65em
+
+  

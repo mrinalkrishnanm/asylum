@@ -7,14 +7,14 @@ class companyStore {
   constructor() {
     this.currentCompany = undefined;
     this.companyInternships = [];
-    this.applications = [];
     this.bindListeners({
       handleLoadCurrent: companyAction.LOAD_CURRENT,
       handleLoadCurrentComplete: companyAction.LOAD_CURRENT_COMPLETE,
       handleLoadCurrentFailure: companyAction.LOAD_CURRENT_FAILURE,
       handleLoadCreated: companyAction.LOAD_CREATED,
       handleLoadCreatedComplete: companyAction.LOAD_CREATED_COMPLETE,
-      handleFetchApplicationsComplete: companyAction.FETCH_APPLICATIONS_COMPLETE
+      handleFetchApplication: companyAction.FETCH_APPLICATION,
+      handleFetchApplicationComplete: companyAction.FETCH_APPLICATION_COMPLETE
     })
   }
 
@@ -39,12 +39,11 @@ class companyStore {
     console.log("Initial dispatcher for created_internships")
   }
 
-  handleFetchApplicantsComplete(res) {
-    this.setState({applicants: res.users})
+  handleFetchApplication() {
+    console.log("Initial dispatcher")
   }
-
-  handleFetchApplicationsComplete(res) {
-    this.setState({applications:res})
+  handleFetchApplicationComplete(res) {
+    this.setState({application:res})
   }
 
 }

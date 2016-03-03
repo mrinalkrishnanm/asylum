@@ -12,20 +12,7 @@ class CompanyInternshipTable extends React.Component{
   constructor () {
     super()
   }
-  
-  componentWillMount() {
-    companyAction.fetchApplications(this.props.params.id)
-    this.onChange = this.onChange.bind(this)
-    companyStore.listen(this.onChange)
-  }
 
-  componentWillUnmount() {
-    companyStore.unlisten(this.onChange)
-  }
-
-  onChange(state) {
-    this.setState(state)
-  }
 
   render () {
 
@@ -49,16 +36,18 @@ class CompanyInternshipTable extends React.Component{
 
         var counter = 0;
         var app_id = 0;
+        var app;
+        var status;
         if(!_.isEmpty(applicants))
           var display = applicants.map((u) => {
             ++counter;
-            var application = _.filter(applications, (a) => {
-              app_id = a.id              
-              return a.user_id = u.id
+            var application = _.filter(applications, function(a) {
+              return a.user_id == u.id
             })[0];
-
-
+            app_id = application.id              
             var status = _.capitalize(application.condition)
+
+
             if (status == "Reviewed")
               var infoStyle = "status-msg orange"
             else if (status == "Hired")
@@ -67,24 +56,25 @@ class CompanyInternshipTable extends React.Component{
               var infoStyle = "status-msg red"
             else
               var infoStyle = "status-msg"
-      
+
             return (
               <tr>
-                  <td>{counter} </td>
-                  <td> {u.first_name} {u.last_name} </td>
-                  <td><span className={infoStyle}>{status}</span></td>
-                  <td><Link to="application" params={{id:app_id}}> <button> View </button> </Link></td>
-                </tr>
+                <td>{counter} </td>
+                <td> {u.first_name} {u.last_name} </td>
+                <td><span className={infoStyle}>{status}</span></td>
+                <td><Link to="application" params={{id:app_id}}> <button> View </button> </Link></td>
+              </tr>
             )
           })
-        else
-          var _display = <p className="info-msg">There are no applicants yet</p>
+          else
+            var _display = <p className="info-msg">There are no applicants yet</p>
 
       }
       return (
         <div className="internship-table">
           <div className="grey-box">
             <h2> {position} </h2>
+            
             <button> Add Questions </button>
             <p> {description} </p>
             <small>{duration} months</small>

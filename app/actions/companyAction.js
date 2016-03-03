@@ -51,12 +51,12 @@ class companyAction {
     return res;
   }
 
-  fetchApplications(id) {
-    var _url = "internships/"+id+"/find_internizes"
-    var url = API.url(_url)
+  fetchApplication(id) {
+    var url = API.url('internizes', id)
+    var _this = this
     var success = (res) => {
       console.log(res)
-      this.fetchApplicationsComplete(res)
+      _this.fetchApplicationComplete(res)
     }
     var failure = (res) => {
       console.log(res)
@@ -65,8 +65,8 @@ class companyAction {
     API.get(url,success,failure)
   }
 
-  fetchApplicationsComplete(res) {
-    return res.internizes;
+  fetchApplicationComplete(res) {
+    return res.internize;
   }
 
 

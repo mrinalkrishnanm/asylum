@@ -42,7 +42,7 @@ class CompanyDashboardContainer extends React.Component{
       <div className="dashboard-wrapper">
         {display}
         <div className="dashboard-container">
-          <RouteHandler currentCompany={this.state.currentCompany} created={this.state.companyInternships}/>
+          <RouteHandler currentCompany={this.state.currentCompany} internships={this.state.companyInternships}/>
         </div>
       </div>
     );
