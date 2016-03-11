@@ -182,13 +182,27 @@
 
 
 .application-body
-  margin-top: 20px
+  margin-top: 25px
   height: 100%
   +span-columns(12)
-  
+
+
+  .applied-time
+    +span-columns(4)
+    text-align: center
+
+    small
+      font-style: italic
+      font-family: 'Georgia'
+
+    h2
+      font-size: 1.2em
+    
+
   .dropdown
-    +span-columns(3)
-    +shift(4.5)
+    +span-columns(4)
+    text-align: center
+    margin-top: 10px
 
   .view-resume
     +span-columns(4)
@@ -197,13 +211,13 @@
     float: right !important
     color: $button-blue
     font-size: 0.9em
-    margin-top: 10px
+    margin-top: 20px
 
 .answer-list
   +span-columns(11)
   +shift(0.5)
   overflow: scroll
-  margin-top: 50px
+  margin-top: 10px
   height: 65%
 
   h2
@@ -212,4 +226,19 @@
 .Select-placeholder
   margin-top: 1px
 
+.answer-wrapper
+  +span-columns(12)
+  hr
+    +span-columns(5, $display:block-collapse)
+    +omega()
+    
+  small
+    +span-columns(2)
+    +omega()
+    margin-top: 13px
+    font-family: 'Georgia'
+    text-align: center
 
+.answer-box
+  p
+    font-style: italic

@@ -17,8 +17,8 @@ class AnswerList extends React.Component{
     var display = answers.map((a) => {
       return (
         <div className="answer-box">
-          <h2> {a.question} </h2>
-          <p> {a.content} </p>
+          <h2>Q: {a.question} </h2>
+          <p>A: {a.content} </p>
         </div>
       )
     })

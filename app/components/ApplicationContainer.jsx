@@ -8,6 +8,7 @@ import companyStore from '../stores/companyStore.js';
 import companyAction from '../actions/companyAction.js';
 import Select from 'react-select';
 import AnswerList from './AnswerList.jsx';
+import moment from 'moment'
 
 class ApplicationContainer extends React.Component{
 
@@ -88,6 +89,7 @@ class ApplicationContainer extends React.Component{
       var user = _.filter(internship.users,function(item) {
         return item.id == application.user_id
       })[0] // GET APPLICANT
+
     }
 
     if(!_.isEmpty(user))
@@ -97,7 +99,9 @@ class ApplicationContainer extends React.Component{
     console.log(this.state.value)
   
     if(!_.isEmpty(application)) {
-
+      
+      var time =  moment(application.created_at).format('LL')
+      console.log(time)
       var display = (
         <div className="application-info">
           <div className="user-info-container">
@@ -112,7 +116,11 @@ class ApplicationContainer extends React.Component{
             </div>
           </div>
 
-            <div className="application-body">
+          <div className="application-body">
+            <div className="applied-time">
+              <small> applied on </small>
+              <h2>{time}</h2>
+            </div>
               <Select
                 name="form-field-name"
                 className="dropdown"
@@ -123,7 +131,12 @@ class ApplicationContainer extends React.Component{
                 placeholder={this.state.value}
               />
               <a href="#" className="view-resume">View Resume</a>
-              <AnswerList answers={application.answers}/>
+              <div className="answer-wrapper">
+                <hr />
+                <small> ANSWERS </small>
+                <hr />
+                <AnswerList answers={application.answers}/>
+              </div>
             </div>
         </div>
       )
