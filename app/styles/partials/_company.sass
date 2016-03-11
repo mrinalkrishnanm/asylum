@@ -118,14 +118,17 @@
 
 .application-info
   +span-columns(9.5 of 12)
-  border-bottom: 1px solid $dark-grey
   padding-bottom: 20px
+  height: 100%
 
 .user-info-container
   +span-columns(12)
+  height: 100%
   margin-top: 25px
   border-radius: 5px
   min-height: 50px
+  padding-bottom: 30px
+  border-bottom: 1px solid $dark-grey
 
 
 .application-title
@@ -141,11 +144,21 @@
     position: absolute
     top: 50%
     margin-top: -0.5em
+    
 
   small
     font-size: 0.9em
-    +span-columns(12)
+    +span-columns(8)
     color: $dark-grey
+
+  button
+    +span-columns(3)
+    position: absolute
+    height: 35px
+    background-color: #0d7efd
+    font-size: 0.9em
+    bottom: 0
+    right: 0
     
 .user-avatar
   +span-columns(2)
@@ -167,4 +180,36 @@
     font-size: 2em
     margin-top: -0.65em
 
+
+.application-body
+  margin-top: 20px
+  height: 100%
+  +span-columns(12)
   
+  .dropdown
+    +span-columns(3)
+    +shift(4.5)
+
+  .view-resume
+    +span-columns(4)
+    +omega()
+    text-align: center
+    float: right !important
+    color: $button-blue
+    font-size: 0.9em
+    margin-top: 10px
+
+.answer-list
+  +span-columns(11)
+  +shift(0.5)
+  overflow: scroll
+  margin-top: 50px
+  height: 65%
+
+  h2
+    font-size: 1.2em
+
+.Select-placeholder
+  margin-top: 1px
+
+
