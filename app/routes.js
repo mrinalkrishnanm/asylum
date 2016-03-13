@@ -31,8 +31,8 @@ var routes = (
   	<Route name="register" path="/register" handler={ Register } />
   	<Route name="login" path="/login" handler={ Login } />
 
-  	<Route name="dashboard-container" path="/dashboard" handler={ DashboardContainer } >
-      <DefaultRoute name="dashboard" handler = {Dashboard} />
+  	<Route name="dashboard" path="/dashboard" handler={ DashboardContainer } >
+      <DefaultRoute handler = {Dashboard} />
       <Route name="internships" path="/internships" handler={ InternshipContainer } >
         <DefaultRoute handler={ InternshipList } />
         <Route name="apply-intern" path=":id" handler={ InternshipApply } />
@@ -45,12 +45,12 @@ var routes = (
 
     <Route name="company-register" path="/company/register" handler={ CompanyRegister } />
     <Route name="company-login" path="/company/login" handler={ CompanyLogin } />
-    <Route name="company-dashboard-container" path="/company/dashboard" handler={ CompanyDashboardContainer }>
-      <DefaultRoute name="company-dashboard" handler={ CompanyDashboard } />
+    <Route name="company-dashboard" path="/company/dashboard" handler={ CompanyDashboardContainer }>
+      <DefaultRoute handler={ CompanyDashboard } />
       <Route name="company-internships" path="/company/internships" handler= { CompanyInternshipContainer } >
         <DefaultRoute handler={ CompanyInternshipList } />
         <Route name='internship-table' path=":id" handler={ CompanyInternshipTable } />
-        <Route name="company-new-internship" path="new" handler= { CompanyInternshipNew } />
+        <Route name="company-new-internship" path="/new" handler= { CompanyInternshipNew } />
       </Route>
 
       <Route name="application" path="/applications/:id" handler = { ApplicationContainer } />

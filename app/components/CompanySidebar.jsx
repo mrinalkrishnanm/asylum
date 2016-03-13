@@ -20,7 +20,7 @@ class CompanySidebar extends React.Component{
         		<ul className='sidebar-contents'>
                     <Gravatar email={this.props.user.email} size="80" />
                     <p className="gravatar-title">Welcome {this.props.user.name} </p>
-              <Link to="dashboard"> <li>Dashboard</li> </Link>
+              <Link to="company-dashboard"> <li>Dashboard</li> </Link>
               <Link to="company-internships"> <li>Internships</li> </Link>
         			<li>Notifications</li>
               <Link to="messages"> <li>Inbox</li> </Link>
