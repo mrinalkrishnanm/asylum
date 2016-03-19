@@ -5,8 +5,6 @@ import companyAction from '../actions/companyAction.js';
 class companyStore {
   
   constructor() {
-    this.currentCompany = undefined;
-    this.companyInternships = [];
     this.bindListeners({
       handleLoadCurrent: companyAction.LOAD_CURRENT,
       handleLoadCurrentComplete: companyAction.LOAD_CURRENT_COMPLETE,
@@ -14,7 +12,9 @@ class companyStore {
       handleLoadCreated: companyAction.LOAD_CREATED,
       handleLoadCreatedComplete: companyAction.LOAD_CREATED_COMPLETE,
       handleFetchApplication: companyAction.FETCH_APPLICATION,
-      handleFetchApplicationComplete: companyAction.FETCH_APPLICATION_COMPLETE
+      handleFetchApplicationComplete: companyAction.FETCH_APPLICATION_COMPLETE,
+      handleLoadApplications: companyAction.LOAD_APPLICATIONS,
+      handleLoadApplicationsComplete: companyAction.LOAD_APPLICATIONS_COMPLETE
     })
   }
 
@@ -44,6 +44,12 @@ class companyStore {
   }
   handleFetchApplicationComplete(res) {
     this.setState({application:res})
+  }
+  handleLoadApplications() {
+    console.log("initial dispatcher")
+  }
+  handleLoadApplicationsComplete(res){
+    this.setState({applications:res})
   }
 
 }

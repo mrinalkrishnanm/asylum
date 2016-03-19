@@ -1,5 +1,6 @@
 import alt from '../alt.js';
 import API from '../components/API.js';
+import _ from 'lodash';
 
 class companyAction {
 
@@ -68,9 +69,27 @@ class companyAction {
   fetchApplicationComplete(res) {
     return res.internize;
   }
+  
+  loadApplications() {
+    var url = API.url('internizes/all_applications')
+    var _this = this
+    var success = (res) => {
+      _this.loadApplicationsComplete(res)
+    }
+    var failure = (res) => {
+      console.log(res)
+    }
+
+    API.get(url,success,failure)
+  }
+
+  loadApplicationsComplete(res) {
+    var response = _.flatten(res.internizes)
+    return response;
+  }
 
 
-
+//FETCHED APPLICATIONS! NOW, PASS IT TO CHARTS PAGE(DASHBOARD)
 }
 
 module.exports = alt.createActions(companyAction);
