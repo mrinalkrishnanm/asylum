@@ -247,9 +247,51 @@
 /* Company Dashboard */
 
 .company-dashboard
-  +span-columns(9.5 of 12)
+  +span-columns(11.5 of 12)
   margin-top: 20px
 
+.company-dashboard-body
+  +span-columns(12)
+  
+  h2
+    +span-columns(12)
+
+.internship-graph-box
+  +span-columns(5.5)
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2)
+  border-radius: 5px
+  padding: 20px
+
 .line-chart
-  +span-columns(6)
+  +span-columns(12)
   height: 200px
+
+.notification-container
+  +span-columns(6)
+  +shift(0.5)
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2)
+  border-radius: 5px
+  padding: 20px
+
+  h2
+    margin-bottom: 20px
+
+.notification-item
+  +span-columns(12)
+  border-bottom: 1px solid rgba(0,0,0,0.2)
+  margin-bottom: 5px
+
+  .user-avatar
+    +span-columns(1)
+    padding: 3.145% 0
+
+    span
+      font-size: 0.9em
+
+  p
+    +span-columns(11)
+    font-size: 0.9em
+    padding-bottom: 5px
+    margin-top: 6px
+  small
+    float: right

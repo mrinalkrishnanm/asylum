@@ -16,10 +16,10 @@ class CompanyDashboard extends React.Component{
     console.log(applications)
     var months = GetMonth.lastMonths(6);
     console.log(months)
-
+    var _data = [0,0,0,0,0,0]
     if(!_.isEmpty(applications))
       { var counter = 0;
-        var _data = applications.map((app) => {
+        _data = applications.map((app) => {
           var created_at = moment(app.created_at).format("MMMM");
           var _no = 0;
           for(var i=counter;i < months.length;i++)
@@ -34,6 +34,7 @@ class CompanyDashboard extends React.Component{
         _data[i] = 0;
       }
       console.log(_data);
+      console.log(months);
       var data = {
         labels: months,
         datasets: [
@@ -50,18 +51,42 @@ class CompanyDashboard extends React.Component{
         ]
       }
 
-
-
       var options = {
         bezierCurve: false,
       }
 
-      return(
-        <div className='company-dashboard'>
-          <h1> Internship Statistics </h1>
-          <Line data={data} className="line-chart" options={options} />
-        </div>
-      )
+
+      if(!_.isEmpty(applications))
+        {
+          var notifications = applications.map(function(item) {
+            var time = moment(item.created_at).fromNow();
+            var name = item.user.first_name.charAt(0)+item.user.last_name.charAt(0)
+            return (
+              <div className="notification-box">
+                <div className="notification-item">
+                  <div className="user-avatar">
+                    <span>{name}</span>
+                  </div>
+                  <p>{item.user.first_name} {item.user.last_name} applied for {item.internship.position} <small>{time}</small></p>
+                  </div>
+                </div>
+            )
+          })
+        }
+        return(
+          <div className='company-dashboard'>
+            <div className="company-dashboard-body">
+              <div className="internship-graph-box">
+                <h2> Internship Statistics </h2>
+                <Line data={data} className="line-chart" options={options} />
+              </div>
+              <div className="notification-container">
+                <h2> Notifications </h2>
+                {notifications}
+              </div>
+            </div>
+          </div>
+        )
   }
 };
 
