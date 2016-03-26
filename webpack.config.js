@@ -29,6 +29,10 @@ module.exports = {
     },{
       test: /\.scss$/,
       loader: "style!css!sass"
+    },
+    {
+    test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+    loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
     }]
   },
   devServer: {

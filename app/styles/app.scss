@@ -45,21 +45,36 @@ html {
   background-color: #e5e5e5;
   border-radius: 5px;
   padding: 15px;
-  margin-top: 8%
+  margin-top: 8%;
 }
 
 .login{
-  @include span-columns(6 of 12)
-  @include shift(3)
+  @include span-columns(6 of 12);
+  @include shift(3);
   background-color: #e5e5e5;
   border-radius: 5px;
   padding: 15px;
-  margin-top: 8%
+  margin-top: 8%;
 }
 .submit-long{
-  @include span-columns(12)
+  @include span-columns(12);
 }
 
 .orange-btn {
-  background-color: #ff9f15
+  background-color: #ff9f15;
+}
+
+@font-face {
+  font-family: 'CodyStar';
+  src: url(./font/Codystar-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'GothamRegular';
+  src: url(./font/GothamRegular.ttf);
+}
+
+@font-face {
+  font-family: 'GothamBold';
+  src: url(./font/Gotham-Bold.ttf);
 }

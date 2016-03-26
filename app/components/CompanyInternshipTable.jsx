@@ -62,7 +62,7 @@ class CompanyInternshipTable extends React.Component{
                 <td>{counter} </td>
                 <td> {u.first_name} {u.last_name} </td>
                 <td><span className={infoStyle}>{status}</span></td>
-                <td><Link to="application" params={{id:app_id}}> <button> View </button> </Link></td>
+                <td><Link to="application" params={{id:app_id}}><small>View</small></Link></td>
               </tr>
             )
           })

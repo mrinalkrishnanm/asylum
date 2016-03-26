@@ -5,27 +5,43 @@
   color: white
 
 .sidebar-contents
-    +span-columns(12)
-    padding-top: 20px
+  +span-columns(12)
+  padding-top: 20px
+  font-weight: 200
+  font-size: 0.9em
+
+  button
+    +span-columns(10)
+    +shift(1)
+    background-color: #4c4743
+    border: 2px dashed #ffb230
     font-weight: 200
+    color: #ffb230
+    font-family: GothamBold
     font-size: 0.9em
 
-    li
-      +span-columns(11.5)
-      +shift(0.25)
-      margin-top: 15px
-      color: #acaba7
-      font-weight: 200
-      padding: 5px 35px
+  button:hover
+    color: white
+    border: 2px solid #ffb230
+    background-color: #ffb230
 
-    li:hover
-      color: white
-      border-radius: 3px
-      background-color: #ed6c44
-      
-    a
-      +shift(1)
-      font-weight: 200
+
+  li
+    +span-columns(11)
+    +shift(0.5)
+    margin-top: 15px
+    color: #acaba7
+    font-weight: 200
+    padding: 5px 35px
+
+  li:hover
+    color: white
+    border-radius: 3px
+    background-color: #ed6c44
+
+  a
+    +shift(1)
+    font-weight: 200
 
 
 

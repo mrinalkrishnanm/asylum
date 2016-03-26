@@ -14,11 +14,16 @@ th {
 
 td {
   border-bottom: $base-border;
-  padding: $small-spacing 0;
+  padding: 0.25em 0;
 }
 
 tr,
 td,
 th {
   vertical-align: middle;
+  padding-left: 10px
+}
+
+tr:nth-child(even) {
+  background-color: #fefaf8
 }

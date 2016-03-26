@@ -12,7 +12,7 @@
   +span-columns(9.5 of 12)
 
 .company-internship-list
-  padding-top: 25px
+  padding-top: 60px
 
 .company-internship-box
   +span-columns(9.5 of 12)
@@ -59,7 +59,7 @@
 
 .internship-table
   +span-columns(9.5 of 12)
-  padding-top: 20px
+  padding-top: 60px
 
 
 .grey-box
@@ -96,6 +96,7 @@
   +span-columns(12)
   margin-top: 20px
   overflow: scroll
+  font-size: 0.9em
 
   .info-msg
     text-align: center
@@ -103,11 +104,11 @@
 
   .status-msg
     +span-columns(6)
-    height: 35px
+    height: 30px
     text-align: center
     padding: 8px 5px
     color: white
-    font-size: 0.9em
+    font-size: 0.8em
     border-radius: 3px
 
   .orange
@@ -118,12 +119,13 @@
     background-color: #89da54
     
   table
-    td
-
-    button
-      height: 35px
+    small
+      height: 30px
       font-size: 0.9em
-      background-color: $button-blue
+      color: $button-blue
+      padding: 5px
+      +span-columns(3)
+      text-align: center
 
 
 .application-info
@@ -299,15 +301,19 @@
     span
       font-size: 0.9em
 
-  em
-    font-weight: 800
+  
+  b
+    font-weight: 400
   p
     +span-columns(8)
     font-size: 0.9em
     padding-bottom: 5px
+    font-weight: 200
     margin-top: 5px
 
   .moment
     +span-columns(2.5)
     float: right
     font-size: 0.7em
+    margin-top: 7px
+    color: #ed6c44

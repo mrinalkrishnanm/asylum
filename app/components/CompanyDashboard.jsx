@@ -33,16 +33,15 @@ class CompanyDashboard extends React.Component{
         for(var i=_data.length;i<6;i++)
         _data[i] = 0;
       }
-      console.log(_data);
-      console.log(months);
+
       var data = {
         labels: months,
         datasets: [
           {
             label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
+            fillColor: "rgba(237,108,68,0.2)",
+            strokeColor: "rgba(237,108,68,1)",
+            pointColor: "rgba(237,108,68,1)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
@@ -62,12 +61,12 @@ class CompanyDashboard extends React.Component{
             var time = moment(item.created_at).fromNow();
             var name = item.user.first_name.charAt(0)+item.user.last_name.charAt(0)
             return (
-              <div className="notification-box">
+              <div key={item.id} className="notification-box">
                 <div className="notification-item">
                   <div className="user-avatar">
                     <span>{name}</span>
                   </div>
-                  <p><em>{item.user.first_name} {item.user.last_name}</em> applied for {item.internship.position}</p> <small className="moment">{time}</small>
+                  <p><b>{item.user.first_name} {item.user.last_name}</b> applied for <em>{item.internship.position}</em></p> <small className="moment">{time}</small>
                   </div>
                 </div>
                 )
@@ -77,16 +76,24 @@ class CompanyDashboard extends React.Component{
                   return item.condition == "reviewed"
                 })
 
+                var internships = this.props.internships
                 var counter = 0;
-                var reviewed_display = reviewed_app.map((item) => {
+
+                var table_display = internships.map((item) => {
                   ++counter;
+                  var unreviewed = item.internizes.filter((a) => {
+                    return a.condition != "reviewed"
+                  })
+                  var unreviewedCount = unreviewed.length
+                  
                   var status = _.capitalize(item.condition)
                   return(
-                    <tr>
+                    <tr key={item.id}>
                       <td> { counter } </td>
-                      <td> {item.user.first_name} {item.user.last_name} </td>
-                      <td><span className="status-msg orange">{status}</span></td>
-                      <td><Link to="application" params={{id:item.id}}><button> View </button></Link></td>
+                      <td> {item.position} </td>
+                      <td>{item.internizes.length}</td>
+                      <td>{unreviewedCount}</td>
+                      <td><Link to="internship-table" params={{id:item.id}}><button> View </button></Link></td>
                     </tr>
                     )
                 })
@@ -109,13 +116,14 @@ class CompanyDashboard extends React.Component{
                           <thead>
                             <tr>
                               <th> # </th>
-                              <th> Name </th>
-                              <th> Status </th>
+                              <th> Position </th>
+                              <th> Applicants </th>
+                              <th> Unreviewed </th>
                               <th> Action </th>
                             </tr>
                           </thead>
                           <tbody>
-                            {reviewed_display}
+                            {table_display}
                           </tbody>
                         </table>
                       </div>
