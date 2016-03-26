@@ -1,3 +1,13 @@
+.title-text
+  position: absolute
+  left: 0
+  +span-columns(9.8 of 12)
+  +shift(2.22)
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2)
+  font-size: 1.4em
+  font-weight: 200
+  padding: 20px 35px
+
 .new-internship
   +span-columns(9.5 of 12)
 
@@ -248,7 +258,7 @@
 
 .company-dashboard
   +span-columns(11.5 of 12)
-  margin-top: 20px
+  margin-top: 100px
 
 .company-dashboard-body
   +span-columns(12)
@@ -267,8 +277,9 @@
   height: 200px
 
 .notification-container
-  +span-columns(6)
+  +span-columns(5.5)
   +shift(0.5)
+  +omega()
   box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2)
   border-radius: 5px
   padding: 20px
@@ -282,16 +293,21 @@
   margin-bottom: 5px
 
   .user-avatar
-    +span-columns(1)
-    padding: 3.145% 0
+    +span-columns(1.5)
+    padding: 5.145% 0
 
     span
       font-size: 0.9em
 
+  em
+    font-weight: 800
   p
-    +span-columns(11)
+    +span-columns(8)
     font-size: 0.9em
     padding-bottom: 5px
-    margin-top: 6px
-  small
+    margin-top: 5px
+
+  .moment
+    +span-columns(2.5)
     float: right
+    font-size: 0.7em

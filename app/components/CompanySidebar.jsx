@@ -17,6 +17,7 @@ class CompanySidebar extends React.Component{
     //console.log(this.state.currentUser)
         return(
     		<div className='sidebar'>
+          <h1 className="interno-logo"> Interno </h1>
         		<ul className='sidebar-contents'>
                     <Gravatar email={this.props.user.email} size="80" />
                     <p className="gravatar-title">Welcome {this.props.user.name} </p>

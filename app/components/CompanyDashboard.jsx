@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from 'react-router';
+import Router, {Link} from 'react-router';
 import Request from 'superagent';
 import _ from 'lodash';
 import { Line } from 'react-chartjs';
@@ -67,32 +67,68 @@ class CompanyDashboard extends React.Component{
                   <div className="user-avatar">
                     <span>{name}</span>
                   </div>
-                  <p>{item.user.first_name} {item.user.last_name} applied for {item.internship.position} <small>{time}</small></p>
+                  <p><em>{item.user.first_name} {item.user.last_name}</em> applied for {item.internship.position}</p> <small className="moment">{time}</small>
                   </div>
                 </div>
-            )
-          })
-        }
-        return(
-          <div className='company-dashboard'>
-            <div className="company-dashboard-body">
-              <div className="internship-graph-box">
-                <h2> Internship Statistics </h2>
-                <Line data={data} className="line-chart" options={options} />
-              </div>
-              <div className="notification-container">
-                <h2> Notifications </h2>
-                {notifications}
-              </div>
-            </div>
-          </div>
-        )
-  }
-};
+                )
+                })
 
-CompanyDashboard.contextTypes = {
-  router: React.PropTypes.func.isRequired
-}
+                var reviewed_app = applications.filter((item) => {
+                  return item.condition == "reviewed"
+                })
 
-module.exports=CompanyDashboard;
+                var counter = 0;
+                var reviewed_display = reviewed_app.map((item) => {
+                  ++counter;
+                  var status = _.capitalize(item.condition)
+                  return(
+                    <tr>
+                      <td> { counter } </td>
+                      <td> {item.user.first_name} {item.user.last_name} </td>
+                      <td><span className="status-msg orange">{status}</span></td>
+                      <td><Link to="application" params={{id:item.id}}><button> View </button></Link></td>
+                    </tr>
+                    )
+                })
+                }
+                return(
+                <div>
+                  <h1 className="title-text"> Dashboard </h1>
+                  <div className='company-dashboard'>
+                    <div className="company-dashboard-body">
+                      <div className="internship-graph-box">
+                        <h2> Internship Statistics </h2>
+                        <Line data={data} className="line-chart" options={options} />
+                      </div>
+                      <div className="notification-container">
+                        <h2> Notifications </h2>
+                        {notifications}
+                      </div>
+                      <div className="applicant-list">
+                        <table>
+                          <thead>
+                            <tr>
+                              <th> # </th>
+                              <th> Name </th>
+                              <th> Status </th>
+                              <th> Action </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {reviewed_display}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                )
+                }
+                };
+
+                CompanyDashboard.contextTypes = {
+                  router: React.PropTypes.func.isRequired
+                }
+
+                module.exports=CompanyDashboard;
 

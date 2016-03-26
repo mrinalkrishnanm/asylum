@@ -1,27 +1,51 @@
 .sidebar 
-	+span-columns(2.5 of 12)
-	background-color: $darkest-blue
-	height: 100%
-	color: $lightest-blue
+  +span-columns(2.5 of 12)
+  background-color: #4c4743
+  height: 100%
+  color: white
 
 .sidebar-contents
-    +span-columns(6)
+    +span-columns(9)
     +shift(3)
     padding-top: 20px
+    font-weight: 200
     font-size: 0.9em
 
     li
-    	margin-top: 15px
+      +span-columns(12)
+      margin-top: 15px
+      color: #acaba7
+      font-weight: 200
+
+    a
+      font-weight: 200
+
+
 
 .gravatar
-	img
-		border-radius: 100px
-		text-align: center
-		+span-columns(10)
-		+shift(1)
-		margin-bottom: 10px
+  img
+    border-radius: 5px
+    -moz-border-radius: 5px
+    -webkit-border-radius: 5px
+    border: 2px solid #ffffff
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.6)
+    text-align: center
+    +span-columns(2.5)
+    margin-bottom: 30px
 
 .gravatar-title
-	text-align: center
-	margin-bottom: 20px
-	
+  +shift(0.5)
+  +span-columns(7.5)
+  margin-top: 8px
+  margin-bottom: 20px
+  color: white
+  font-weight: 400
+
+
+.interno-logo
+  padding: 20px
+  font-weight: 200
+  font-size: 1.4em
+  text-align: center
+  color: white
+  background-color: #ed6c44

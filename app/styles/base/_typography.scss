@@ -22,13 +22,11 @@ p {
 }
 
 a {
-  color: $action-color;
   text-decoration: none;
-  transition: color $base-duration $base-timing;
+}
 
-  &:hover {
-    color: shade($action-color, 25%);
-  }
+a:visited,a:hover,a:active,a:link {
+  color: white
 }
 
 hr {
