@@ -1,23 +1,30 @@
 .sidebar 
-  +span-columns(2.5 of 12)
+  +span-columns(2 of 12)
   background-color: #4c4743
   height: 100%
   color: white
 
 .sidebar-contents
-    +span-columns(9)
-    +shift(3)
+    +span-columns(12)
     padding-top: 20px
     font-weight: 200
     font-size: 0.9em
 
     li
-      +span-columns(12)
+      +span-columns(11.5)
+      +shift(0.25)
       margin-top: 15px
       color: #acaba7
       font-weight: 200
+      padding: 5px 35px
 
+    li:hover
+      color: white
+      border-radius: 3px
+      background-color: #ed6c44
+      
     a
+      +shift(1)
       font-weight: 200
 
 
@@ -31,15 +38,17 @@
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.6)
     text-align: center
     +span-columns(2.5)
+    +shift(1.5)
     margin-bottom: 30px
 
 .gravatar-title
   +shift(0.5)
-  +span-columns(7.5)
-  margin-top: 8px
+  +span-columns(6)
+  margin-top: 10px
   margin-bottom: 20px
   color: white
-  font-weight: 400
+  font-weight: 200
+  font-size: 0.95em
 
 
 .interno-logo
