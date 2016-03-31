@@ -14,7 +14,9 @@ class companyStore {
       handleFetchApplication: companyAction.FETCH_APPLICATION,
       handleFetchApplicationComplete: companyAction.FETCH_APPLICATION_COMPLETE,
       handleLoadApplications: companyAction.LOAD_APPLICATIONS,
-      handleLoadApplicationsComplete: companyAction.LOAD_APPLICATIONS_COMPLETE
+      handleLoadApplicationsComplete: companyAction.LOAD_APPLICATIONS_COMPLETE,
+      handleFetchConversations: companyAction.FETCH_CONVERSATIONS,
+      handleFetchConversationsComplete: companyAction.FETCH_CONVERSATIONS_COMPLETE
     })
   }
 
@@ -50,6 +52,14 @@ class companyStore {
   }
   handleLoadApplicationsComplete(res){
     this.setState({applications:res})
+  }
+
+  handleFetchConversations() {
+    console.log("initial dispatcher")
+  }
+
+  handleFetchConversationsComplete(res) {
+    this.setState({conversations:res})
   }
 
 }

@@ -67,30 +67,61 @@
   +span-columns(12)
 
   h2
-    +span-columns(3)
+    +span-columns(4)
+    font-weight: 400
+    margin-top: 10px
+    font-size: 1.3em
 
   button
     +span-columns(2)
-    +shift(7)
+    +shift(6)
     +omega()
-    height: 35px
+    height: 30px
     font-size: 0.8em
     background-color: $button-blue
     float: right
 
   p
-    margin-top: 20px
-    +span-columns(12)
-
-  small
-    +span-columns(1.5)
-    font-size: 0.85em
-    border-radius: 20px
+    margin-top: 0px
     font-weight: 400
-    border: 2px solid $light-blue
+    +span-columns(10)
+
+
+  h1
+    +span-columns(12)
+    font-size: 1.5em
     text-align: center
-    color: $light-blue
-    padding: 3px
+    font-weight: 200
+
+  li
+    +span-columns(4, $display:block-collapse)
+    border-right: 1px solid rgba(0,0,0,0.05)
+    padding: 10px
+    transition: all 200ms ease-in
+
+    small
+      +span-columns(12)
+      text-align: center
+      font-family: 'Georgia'
+      font-style: italic
+      font-size: 0.9em
+      margin-top: -15px
+
+  li:last-of-type
+    border: none
+    border-top-right-radius: 3px
+    border-bottom-right-radius: 3px
+    
+  li:first-of-type
+    border-top-left-radius: 3px
+    border-bottom-left-radius: 3px
+
+  li:hover
+    box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1)
+    h1,small
+      color: #ed6c44
+
+    
     
 .applicant-list
   +span-columns(12)

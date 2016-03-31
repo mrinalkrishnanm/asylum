@@ -88,8 +88,30 @@ class companyAction {
     return response;
   }
 
-
 //FETCHED APPLICATIONS! NOW, PASS IT TO CHARTS PAGE(DASHBOARD)
+  
+  
+  fetchConversations() {
+    var url = API.url('conversations/company_conversations')
+    var _this = this
+
+    var success = (res) => {
+      console.log(res)
+      console.log("Fetched conversations")
+      _this.fetchConversationsComplete(res)
+    }
+
+    var failure = (err) => {
+      console.log(err)
+    }
+    
+    API.get(url,success,failure)
+  }
+
+  fetchConversationsComplete(res) {
+    return res.conversations;
+  }
+
 }
 
 module.exports = alt.createActions(companyAction);

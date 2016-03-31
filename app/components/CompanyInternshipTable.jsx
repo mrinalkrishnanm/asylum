@@ -68,18 +68,16 @@ class CompanyInternshipTable extends React.Component{
           })
           else
             var _display = <p className="info-msg">There are no applicants yet</p>
-
       }
       return (
         <div className="internship-table">
           <div className="grey-box">
             <h2> {position} </h2>
-            
             <button> Add Questions </button>
-            <p> {description} </p>
-            <small>{duration} months</small>
-            <small>₹{stipend} </small>
-            <small>{location} </small>
+            <p>{description}</p>
+            <li><h1>{duration}</h1><small>months</small></li>
+            <li><h1>₹{stipend}</h1><small>stipend</small></li>
+            <li><h1>{location}</h1><small>location</small></li>
 
           </div>
           <div className="applicant-list">

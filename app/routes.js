@@ -23,6 +23,10 @@ import CompanyInternshipContainer from './components/CompanyInternshipContainer.
 import CompanyInternshipList from './components/CompanyInternshipList.jsx';
 import CompanyInternshipNew from './components/CompanyInternshipNew.jsx';
 import CompanyInternshipTable from './components/CompanyInternshipTable.jsx'
+import CompanyMessageRoute from './components/CompanyMessageRoute.jsx';
+import CompanyMessageList from './components/CompanyMessageList.jsx';
+import CompanyMessageBox from './components/CompanyMessageBox.jsx';
+
 
 import ApplicationContainer from './components/ApplicationContainer.jsx';
 
@@ -55,6 +59,10 @@ var routes = (
 
       <Route name="application" path="/applications/:id" handler = { ApplicationContainer } />
 
+      <Route name="company-messages" path="/company/messages" handler={ CompanyMessageRoute } >
+        <DefaultRoute handler={CompanyMessageList} />
+        <Route name="company-message" path=":id" handler={CompanyMessageBox} />
+      </Route>
 
     </Route>
     

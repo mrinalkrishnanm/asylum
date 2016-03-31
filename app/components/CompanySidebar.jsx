@@ -25,7 +25,7 @@ class CompanySidebar extends React.Component{
           <Link to="company-dashboard"> <li>Dashboard</li> </Link>
           <Link to="company-internships"> <li>Internships</li> </Link>
           <li>Notifications</li>
-          <Link to="messages"> <li>Inbox</li> </Link>
+          <Link to="company-messages"> <li>Inbox</li> </Link>
           <li>Settings</li>
         </ul>
       </div>

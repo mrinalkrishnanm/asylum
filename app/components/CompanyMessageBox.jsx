@@ -1,0 +1,38 @@
+"use strict";
+
+import React from 'react';
+import Router from 'react-router';
+import Request from 'superagent';
+import _ from 'lodash';
+
+class CompanyMessageBox extends React.Component{
+
+  constructor () {
+    super()
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.showMessage(this.props.conversation)
+  }
+  render () {
+    var conversation = this.props.conversation
+    var company = conversation.company
+    var user = conversation.user
+    var messages = conversation.messages
+    var msgCount = messages.length
+    if(messages.length>0)
+      var lastMsg = _.last(messages).content
+
+    return (
+      <div key={conversation.id} onClick={this.handleClick.bind(this)} className="message-box">
+        <p> Me & {user.first_name} {user.last_name} </p>
+        <h4> {msgCount} </h4>        
+        <h2> {conversation.subject} </h2>
+        <small> {lastMsg} </small>
+      </div>
+    );
+  }
+}
+
+module.exports = CompanyMessageBox;

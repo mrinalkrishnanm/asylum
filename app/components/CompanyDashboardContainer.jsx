@@ -22,6 +22,7 @@ class CompanyDashboardContainer extends React.Component{
     companyAction.loadCurrent();
     companyAction.loadCreated();
     companyAction.loadApplications();
+    companyAction.fetchConversations();
     this.onChange = this.onChange.bind(this)
     companyStore.listen(this.onChange)
   }
@@ -43,7 +44,7 @@ class CompanyDashboardContainer extends React.Component{
       <div className="dashboard-wrapper">
         {display}
         <div className="dashboard-container">
-          <RouteHandler currentCompany={this.state.currentCompany} applications={this.state.applications} internships={this.state.companyInternships}/>
+          <RouteHandler conversations={this.state.conversations} currentCompany={this.state.currentCompany} applications={this.state.applications} internships={this.state.companyInternships}/>
         </div>
       </div>
     );
