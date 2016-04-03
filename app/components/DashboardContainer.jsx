@@ -26,11 +26,14 @@ class DashboardContainer extends React.Component{
     internshipAction.fetchInternship();
     internshipAction.fetchApplied();
     internshipStore.listen(this.onChange)
+    conversationStore.listen(this.onChange)
   }
 
   componentWillUnmount() {
     userStore.unlisten(this.onChange)
     internshipStore.unlisten(this.onChange)
+    conversationStore.unlisten(this.onChange)
+
   }
 
   onChange(state) {
@@ -48,7 +51,8 @@ class DashboardContainer extends React.Component{
       <div className='dashboard-wrapper'>
         {display}
         <div className='dashboard-container'>
-          <RouteHandler />
+          <RouteHandler internships={this.state.internships} currentUser={this.state.currentUser} 
+          conversations={this.state.conversations}/>
         </div>
       </div>
     )

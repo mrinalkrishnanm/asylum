@@ -37,7 +37,7 @@ class InternshipList extends React.Component{
 
   render() {
     var applied = this.state.appliedInternships
-    var internships = this.state.internships
+    var internships = this.props.internships
     if(this.state.listAll) {
       if(!_.isEmpty(internships)) {
         var display = internships.map((internship) => {

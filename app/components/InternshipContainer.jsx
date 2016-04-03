@@ -13,7 +13,7 @@ class InternshipContainer extends React.Component{
   }
   render () {
     return (
-        <RouteHandler />
+        <RouteHandler internships={this.props.internships}/>
     );
   }
 }

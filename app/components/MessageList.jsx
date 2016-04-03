@@ -12,21 +12,8 @@ class MessageList extends React.Component{
 
   constructor () {
     super()
-    this.state = conversationStore.getState();
   }
 
-  componentWillMount() {
-    this.onChange = this.onChange.bind(this)
-    conversationStore.listen(this.onChange)
-  }
-
-  componentWillUnmount() {
-    conversationStore.unlisten(this.onChange)
-  }
-  
-  onChange(state) {
-    this.setState(state)
-  }
 
   showMessage(conversation){
     this.setState({

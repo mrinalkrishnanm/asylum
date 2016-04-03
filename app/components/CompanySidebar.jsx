@@ -24,7 +24,6 @@ class CompanySidebar extends React.Component{
           <button> ADD INTERNSHIP </button>
           <Link to="company-dashboard"> <li>Dashboard</li> </Link>
           <Link to="company-internships"> <li>Internships</li> </Link>
-          <li>Notifications</li>
           <Link to="company-messages"> <li>Inbox</li> </Link>
           <li>Settings</li>
         </ul>
